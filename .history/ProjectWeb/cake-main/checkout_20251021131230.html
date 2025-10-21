@@ -7,7 +7,7 @@
     <meta name="keywords" content="Cake, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Check Out</title>
+    <title>Cake | Template</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
@@ -26,66 +26,6 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-        <style>
-        /* ==================================== */
-        /* CẤU TRÚC MENU THẢ XUỐNG (DROPDOWN) */
-        /* ==================================== */
-
-        /* 1. Thiết lập vị trí tương đối cho mục cha */
-        .header__top__left ul li.has-dropdown {
-            position: relative; 
-        }
-
-        /* KHẮC PHỤC LỖI TÔ ĐEN TRÊN LIÊN KẾT CHA */
-        .header__top__left ul li.has-dropdown > a:focus,
-        .header__top__left ul li.has-dropdown > a:active {
-            /* Dùng !important để ghi đè CSS từ file style.css nếu cần */
-            outline: none !important; 
-            -webkit-tap-highlight-color: transparent; 
-            background-color: transparent !important;
-        }
-
-        /* 2. Thiết lập trạng thái mặc định (ẨN) cho dropdown */
-        .header__top__left ul li .dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0; 
-            z-index: 100;
-
-            /* NỀN ĐẬM CHO CHỮ TRẮNG NỔI BẬT */
-            background-color: #333; /* Nền xám/đen đậm */
-            border: 1px solid #555;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            min-width: 200px;
-            padding: 5px 0;
-            list-style: none; /* Loại bỏ dấu chấm */
-        }
-
-        /* 3. Hiển thị menu khi di chuột vào mục cha */
-        .header__top__left ul li.has-dropdown:hover > .dropdown {
-            display: block;
-        }
-
-        /* 4. Định kiểu cho các mục con trong menu */
-        .header__top__left ul li .dropdown li a {
-            display: block;
-            padding: 10px 15px;
-            text-decoration: none;
-            
-            /* MÀU CHỮ TRẮNG */
-            color: white; 
-            
-            font-size: 16px;
-            white-space: nowrap;
-        }
-
-        /* Hiệu ứng di chuột (hover) cho các mục con */
-        .header__top__left ul li .dropdown li a:hover {
-            background-color: #555; /* Nền xám nhẹ khi hover */
-            color: #ffcc00; /* Màu nổi bật khi hover */
-        }
-    </style>
 </head>
 
 <body>
@@ -113,7 +53,7 @@
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__option">
             <ul>
-                <li><a href="./login.html">Sign in</a> <span class="arrow_carrot-down"></span></li>
+                <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
             </ul>
         </div>
     </div>
@@ -128,16 +68,7 @@
                         <div class="header__top__inner">
                             <div class="header__top__left">
                                 <ul>
-                                    <li class="has-dropdown">
-                                    <a href="./profile.html">
-                                            Xin chào <strong>Đào Hữu Tài</strong> 
-                                            <span class="arrow_carrot-down"></span> 
-                                    </a>
-                                        <ul class="dropdown">
-                                            <li><a href="./profile.html">My Profile</a></li> 
-                                            <li><a href="./register.html">Log out</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
                                 </ul>
                             </div>
                             <div class="header__logo">
@@ -146,10 +77,10 @@
                             <div class="header__top__right">
                                 <div class="header__top__right__links">
                                     <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                                    <a href="./wisslist.html"><img src="img/icon/heart.png" alt=""></a>
+                                    <a href="#"><img src="img/icon/heart.png" alt=""></a>
                                 </div>
                                 <div class="header__top__right__cart">
-                                    <a href="./shoping-cart.html"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
                                     <div class="cart__price">Cart: <span>0đ</span></div>
                                 </div>
                             </div>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập & Đăng ký - Muffin Ngọt Ngào</title>
+    <style>
+        /* ==================================== */
+        /* CƠ BẢN VÀ BACKGROUND */
+        /* ==================================== */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('img/hero/hero-1.jpg'); /* Đảm bảo file hero-1.png nằm cùng thư mục */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.5s;
+        }
+
+        /* ==================================== */
+        /* CONTAINER CHÍNH */
+        /* ==================================== */
+        .auth-container {
+            background-color: rgba(255, 255, 255, 0.9); /* Nền form trắng hơi trong suốt */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Shadow đậm hơn để nổi bật */
+            width: 350px;
+            text-align: center;
+            overflow: hidden; /* Quan trọng để ẩn form đang không hoạt động */
+        }
+        
+        /* ==================================== */
+        /* HEADER (TAB CHUYỂN ĐỔI) */
+        /* ==================================== */
+        .auth-header {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0e6d6; /* Đường kẻ nhẹ */
+        }
+        .auth-header button {
+            flex: 1;
+            padding: 15px 0;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            color: #b0a69a; /* Màu chữ mờ */
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+        /* Style cho nút đang được chọn */
+        .auth-header button.active {
+            color: #8b4513; /* Màu nâu đất nổi bật */
+            border-bottom: 3px solid #8b4513;
+        }
+
+        /* ==================================== */
+        /* FORM CHUNG */
+        /* ==================================== */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #6a4f4b;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #fffaf0; /* Màu kem */
+            font-size: 16px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        .submit-btn:hover {
+            background-color: #a0522d;
+        }
+        .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+            color: #ffb74d; /* Màu vàng cam */
+        }
+
+        /* ==================================== */
+        /* HIỂN THỊ FORM (Dùng JavaScript để điều khiển) */
+        /* ==================================== */
+        #login-form, #signup-form {
+            display: none; /* Mặc định ẩn cả hai */
+            animation: fadeIn 0.5s;
+        }
+        #login-form.active, #signup-form.active {
+            display: block; /* Chỉ hiển thị form đang active */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .link {
+            display: block;
+            margin-top: 15px;
+            color: #8b4513;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <span class="icon">🧁</span>
+        
+        <div class="auth-header">
+            <button id="login-tab" class="active" onclick="showForm('login')">Đăng Nhập</button>
+            <button id="signup-tab" onclick="showForm('signup')">Đăng Ký</button>
+        </div>
+
+        <form id="login-form" class="active">
+            <div class="form-group">
+                <label for="login-username">Tên người dùng</label>
+                <input type="text" id="login-username" name="username" placeholder="Nhập tên đăng nhập" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Mật khẩu</label>
+                <input type="password" id="login-password" name="password" placeholder="Nhập mật khẩu" required>
+            </div>
+            <button type="submit" class="submit-btn">ĐĂNG NHẬP</button>
+            <a href="#" class="link">Quên mật khẩu?</a>
+        </form>
+
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" name="email" placeholder="Nhập địa chỉ Email" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-username">Tên người dùng</label>
+                <input type="text" id="signup-username" name="username" placeholder="Chọn tên đăng nhập" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Mật khẩu</label>
+                <input type="password" id="signup-password" name="password" placeholder="Tạo mật khẩu" required>
+            </div>
+            <button type="submit" class="submit-btn">ĐĂNG KÝ TÀI KHOẢN</button>
+        </form>
+    </div>
+
+    <script>
+        // Hàm chuyển đổi giữa form Login và Signup
+        function showForm(formId) {
+            // Loại bỏ class 'active' khỏi tất cả các form
+            document.getElementById('login-form').classList.remove('active');
+            document.getElementById('signup-form').classList.remove('active');
+            
+            // Thêm class 'active' vào form mong muốn
+            document.getElementById(formId + '-form').classList.add('active');
+
+            // Cập nhật trạng thái 'active' cho nút tab
+            document.getElementById('login-tab').classList.remove('active');
+            document.getElementById('signup-tab').classList.remove('active');
+            document.getElementById(formId + '-tab').classList.add('active');
+        }
+        
+        // Mặc định hiển thị form đăng nhập khi tải trang
+        document.addEventListener('DOMContentLoaded', () => {
+            showForm('login');
+        });
+    </script>
+</body>
+</html>

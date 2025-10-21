@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ Khách hàng - [Tên Khách Hàng]</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CSS tùy chỉnh để đặt ảnh hero-1.jpg làm nền */
+        .customer-banner {
+            background-image: url('hero-1.jpg'); /* Đảm bảo đường dẫn ảnh đúng */
+            background-size: cover;
+            background-position: center;
+            height: 250px; /* Chiều cao cố định cho banner */
+            position: relative;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+            <span class="text-2xl font-bold text-pink-600">SWEET SHOP</span>
+            <div class="space-x-4">
+                <a href="#" class="text-gray-600 hover:text-pink-600">Sản phẩm</a>
+                <a href="#" class="text-pink-600 font-semibold border-b-2 border-pink-600 pb-1">Hồ sơ</a>
+                <a href="#" class="text-white bg-gray-500 hover:bg-gray-600 px-3 py-1 rounded-md text-sm font-medium">Đăng Xuất</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="customer-banner flex items-center justify-center">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        
+        <div class="relative text-center text-white p-4">
+            <h1 class="text-4xl font-extrabold tracking-tight">Chào mừng trở lại, [Tên Khách Hàng]!</h1>
+            <p class="text-xl mt-2 font-light">Cảm ơn bạn đã là một thành viên thân thiết của Sweet Shop!</p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 -mt-10 relative">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+            <div class="md:col-span-1 space-y-6">
+                <div class="bg-white shadow-lg rounded-lg p-6">
+                    <h2 class="text-lg font-bold text-gray-800 border-b pb-2 mb-4">Thông tin của tôi</h2>
+                    <div class="space-y-2 text-sm">
+                        <p class="font-semibold">Email:</p>
+                        <p class="text-gray-600">[emailkhachhang@email.com]</p>
+                        <p class="font-semibold pt-2">Số điện thoại:</p>
+                        <p class="text-gray-600">090xxxxxxx</p>
+                    </div>
+                    <button class="mt-4 w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 rounded-lg transition duration-150">
+                        Chỉnh sửa Hồ sơ
+                    </button>
+                </div>
+                
+                <div class="bg-white shadow-lg rounded-lg p-6">
+                    <h2 class="text-lg font-bold text-gray-800 border-b pb-2 mb-4">Menu Khách hàng</h2>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-pink-600 font-semibold hover:text-pink-700">Đơn hàng của tôi</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-pink-600">Ưu đãi & Voucher</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-pink-600">Địa chỉ giao hàng</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-pink-600">Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-6">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white shadow-lg rounded-lg p-6 border-l-4 border-pink-500">
+                        <p class="text-sm font-medium text-gray-500">Điểm tích lũy hiện tại</p>
+                        <p class="text-3xl font-bold text-pink-600 mt-1">1,250 điểm</p>
+                        <p class="text-xs text-gray-500 mt-2">Đạt 2,000 điểm để lên hạng Vàng!</p>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg p-6 border-l-4 border-yellow-500">
+                        <p class="text-sm font-medium text-gray-500">Hạng Thành Viên</p>
+                        <p class="text-3xl font-bold text-yellow-600 mt-1">Bạc</p>
+                        <p class="text-xs text-gray-500 mt-2">Bạn được giảm 5% cho mỗi đơn hàng.</p>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg p-6 border-l-4 border-blue-500">
+                        <p class="text-sm font-medium text-gray-500">Tổng số đơn hàng đã đặt</p>
+                        <p class="text-3xl font-bold text-blue-600 mt-1">12 đơn</p>
+                        <p class="text-xs text-gray-500 mt-2">Cảm ơn bạn đã tin tưởng chúng tôi!</p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-lg rounded-lg p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 border-b pb-3 mb-4 flex justify-between items-center">
+                        Đơn hàng gần đây
+                        <a href="#" class="text-sm text-pink-600 hover:underline">Xem tất cả</a>
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="border-b pb-4 last:border-b-0 flex justify-between items-center">
+                            <div>
+                                <p class="font-semibold">#SWT0012</p>
+                                <p class="text-sm text-gray-500">Đặt ngày: 15/10/2025</p>
+                                <p class="text-sm text-pink-600 mt-1">2x Cupcake Dâu Tây, 1x Bánh Tiramisu</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-lg font-bold text-green-600">450.000 VNĐ</span>
+                                <span class="block text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full mt-1">Đã giao</span>
+                            </div>
+                        </div>
+                        
+                        <div class="border-b pb-4 last:border-b-0 flex justify-between items-center">
+                            <div>
+                                <p class="font-semibold">#SWT0011</p>
+                                <p class="text-sm text-gray-500">Đặt ngày: 01/09/2025</p>
+                                <p class="text-sm text-pink-600 mt-1">3x Muffin Socola kem tươi</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-lg font-bold text-green-600">225.000 VNĐ</span>
+                                <span class="block text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full mt-1">Đã giao</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

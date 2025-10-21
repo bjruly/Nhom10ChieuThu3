@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ Của Tôi - Sweet Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CSS tùy chỉnh để đặt ảnh hero-1.jpg làm nền */
+        .profile-hero {
+            background-image: url('hero-1.jpg'); /* Đảm bảo đường dẫn ảnh đúng */
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            position: relative;
+        }
+        /* Style cho Avatar */
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+            <span class="text-2xl font-bold text-pink-600">SWEET SHOP</span>
+            <div class="space-x-4">
+                <a href="#" class="text-gray-600 hover:text-pink-600">Sản phẩm</a>
+                <a href="#" class="text-pink-600 font-semibold border-b-2 border-pink-600 pb-1">Hồ sơ Của Tôi</a>
+                <a href="#" class="text-white bg-gray-500 hover:bg-gray-600 px-3 py-1 rounded-md text-sm font-medium">Đăng Xuất</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-hero flex items-center justify-center">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        
+        <div class="relative text-center text-white p-4 flex flex-col items-center">
+            <img class="profile-avatar mb-3" src="https://via.placeholder.com/100/F472B6/FFFFFF?text=MN" alt="Avatar"> 
+            <h1 class="text-3xl font-extrabold tracking-tight">Chào mừng, Nguyễn Thị Mai!</h1>
+            <p class="text-lg mt-1 font-light">Thành viên Hạng Vàng - Rất vui được phục vụ bạn.</p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+            <div class="lg:col-span-1 space-y-6">
+                
+                <div class="bg-white shadow-xl rounded-lg p-6">
+                    <h2 class="text-xl font-bold text-gray-800 border-b pb-3 mb-4">Thông tin Cá nhân</h2>
+                    <div class="space-y-3 text-sm">
+                        <p><span class="font-semibold text-gray-700">Email:</span> mainguyen.customer@email.com</p>
+                        <p><span class="font-semibold text-gray-700">Điện thoại:</span> 0912 345 678</p>
+                        <p><span class="font-semibold text-gray-700">Địa chỉ:</span> 123 Đường Bánh Ngọt, Q.10, TP.HCM</p>
+                    </div>
+                    <button class="mt-5 w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 rounded-lg transition duration-150">
+                        Cập nhật Hồ sơ
+                    </button>
+                </div>
+                
+                <div class="bg-white shadow-xl rounded-lg p-6">
+                    <h2 class="text-xl font-bold text-gray-800 border-b pb-3 mb-4">Điều hướng</h2>
+                    <ul class="space-y-2 text-base">
+                        <li><a href="#" class="text-pink-600 font-semibold hover:text-pink-700">Đơn hàng Của Tôi</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-pink-600">Ưu đãi & Voucher</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-pink-600">Sản phẩm Yêu thích</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-pink-600">Đổi Mật khẩu</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 space-y-8">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <div class="bg-white shadow-xl rounded-lg p-5 border-l-4 border-yellow-500 hover:shadow-2xl transition duration-300">
+                        <p class="text-sm font-medium text-gray-500">Hạng Thành Viên</p>
+                        <p class="text-3xl font-extrabold text-yellow-600 mt-1">VÀNG</p>
+                        <p class="text-xs text-gray-500 mt-2">Giảm **10%** cho mọi đơn hàng.</p>
+                    </div>
+                    
+                    <div class="bg-white shadow-xl rounded-lg p-5 border-l-4 border-pink-500 hover:shadow-2xl transition duration-300">
+                        <p class="text-sm font-medium text-gray-500">Điểm Tích Lũy</p>
+                        <p class="text-3xl font-extrabold text-pink-600 mt-1">2,850 điểm</p>
+                        <p class="text-xs text-gray-500 mt-2">Có thể quy đổi thành **285.000 VNĐ**.</p>
+                    </div>
+                    
+                    <div class="bg-white shadow-xl rounded-lg p-5 border-l-4 border-blue-500 hover:shadow-2xl transition duration-300">
+                        <p class="text-sm font-medium text-gray-500">Tổng Số Đơn Hàng</p>
+                        <p class="text-3xl font-extrabold text-blue-600 mt-1">25</p>
+                        <p class="text-xs text-gray-500 mt-2">Cảm ơn bạn đã đồng hành cùng Sweet Shop!</p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-xl rounded-lg p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 border-b pb-4 mb-4 flex justify-between items-center">
+                        Lịch sử Đơn hàng Gần đây
+                        <a href="#" class="text-sm text-pink-600 hover:underline">Xem Tất Cả ></a>
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="border-b pb-4 last:border-b-0 flex justify-between items-start">
+                            <div class="flex-1">
+                                <p class="font-semibold text-gray-800">#ODR25 - Bánh Tiramisu & Muffin</p>
+                                <p class="text-sm text-gray-500 mt-1">Đặt ngày: 20/10/2025</p>
+                                <p class="text-xs text-pink-600 mt-1">Đã áp dụng mã giảm giá Hạng Vàng.</p>
+                            </div>
+                            <div class="text-right ml-4">
+                                <span class="text-xl font-bold text-green-600 block">650.000 VNĐ</span>
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full mt-1 inline-block">Đã Giao</span>
+                            </div>
+                        </div>
+                        
+                        <div class="border-b pb-4 last:border-b-0 flex justify-between items-start">
+                            <div class="flex-1">
+                                <p class="font-semibold text-gray-800">#ODR24 - Combo Cupcake Sinh Nhật</p>
+                                <p class="text-sm text-gray-500 mt-1">Đặt ngày: 05/09/2025</p>
+                            </div>
+                            <div class="text-right ml-4">
+                                <span class="text-xl font-bold text-green-600 block">1,200,000 VNĐ</span>
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full mt-1 inline-block">Đã Giao</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

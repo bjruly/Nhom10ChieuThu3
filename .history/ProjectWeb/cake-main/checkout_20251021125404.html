@@ -7,7 +7,7 @@
     <meta name="keywords" content="Cake, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Check Out</title>
+    <title>Cake | Template</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
@@ -26,66 +26,6 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-        <style>
-        /* ==================================== */
-        /* CẤU TRÚC MENU THẢ XUỐNG (DROPDOWN) */
-        /* ==================================== */
-
-        /* 1. Thiết lập vị trí tương đối cho mục cha */
-        .header__top__left ul li.has-dropdown {
-            position: relative; 
-        }
-
-        /* KHẮC PHỤC LỖI TÔ ĐEN TRÊN LIÊN KẾT CHA */
-        .header__top__left ul li.has-dropdown > a:focus,
-        .header__top__left ul li.has-dropdown > a:active {
-            /* Dùng !important để ghi đè CSS từ file style.css nếu cần */
-            outline: none !important; 
-            -webkit-tap-highlight-color: transparent; 
-            background-color: transparent !important;
-        }
-
-        /* 2. Thiết lập trạng thái mặc định (ẨN) cho dropdown */
-        .header__top__left ul li .dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0; 
-            z-index: 100;
-
-            /* NỀN ĐẬM CHO CHỮ TRẮNG NỔI BẬT */
-            background-color: #333; /* Nền xám/đen đậm */
-            border: 1px solid #555;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            min-width: 200px;
-            padding: 5px 0;
-            list-style: none; /* Loại bỏ dấu chấm */
-        }
-
-        /* 3. Hiển thị menu khi di chuột vào mục cha */
-        .header__top__left ul li.has-dropdown:hover > .dropdown {
-            display: block;
-        }
-
-        /* 4. Định kiểu cho các mục con trong menu */
-        .header__top__left ul li .dropdown li a {
-            display: block;
-            padding: 10px 15px;
-            text-decoration: none;
-            
-            /* MÀU CHỮ TRẮNG */
-            color: white; 
-            
-            font-size: 16px;
-            white-space: nowrap;
-        }
-
-        /* Hiệu ứng di chuột (hover) cho các mục con */
-        .header__top__left ul li .dropdown li a:hover {
-            background-color: #555; /* Nền xám nhẹ khi hover */
-            color: #ffcc00; /* Màu nổi bật khi hover */
-        }
-    </style>
 </head>
 
 <body>
@@ -100,11 +40,11 @@
         <div class="offcanvas__cart">
             <div class="offcanvas__cart__links">
                 <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                <a href="./wisslist.html"><img src="img/icon/heart.png" alt=""></a>
+                <a href="#"><img src="img/icon/heart.png" alt=""></a>
             </div>
             <div class="offcanvas__cart__item">
-                <a href="./shoping-cart.html"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                <div class="cart__price">Cart: <span>0đ</span></div>
+                <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                <div class="cart__price">Cart: <span>$0.00</span></div>
             </div>
         </div>
         <div class="offcanvas__logo">
@@ -113,7 +53,19 @@
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__option">
             <ul>
-                <li><a href="./login.html">Sign in</a> <span class="arrow_carrot-down"></span></li>
+                <li>USD <span class="arrow_carrot-down"></span>
+                    <ul>
+                        <li>EUR</li>
+                        <li>USD</li>
+                    </ul>
+                </li>
+                <li>ENG <span class="arrow_carrot-down"></span>
+                    <ul>
+                        <li>Spanish</li>
+                        <li>ENG</li>
+                    </ul>
+                </li>
+                <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
             </ul>
         </div>
     </div>
@@ -128,16 +80,19 @@
                         <div class="header__top__inner">
                             <div class="header__top__left">
                                 <ul>
-                                    <li class="has-dropdown">
-                                    <a href="./profile.html">
-                                            Xin chào <strong>Đào Hữu Tài</strong> 
-                                            <span class="arrow_carrot-down"></span> 
-                                    </a>
-                                        <ul class="dropdown">
-                                            <li><a href="./profile.html">My Profile</a></li> 
-                                            <li><a href="./register.html">Log out</a></li>
+                                    <li>USD <span class="arrow_carrot-down"></span>
+                                        <ul>
+                                            <li>EUR</li>
+                                            <li>USD</li>
                                         </ul>
                                     </li>
+                                    <li>ENG <span class="arrow_carrot-down"></span>
+                                        <ul>
+                                            <li>Spanish</li>
+                                            <li>ENG</li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
                                 </ul>
                             </div>
                             <div class="header__logo">
@@ -146,11 +101,11 @@
                             <div class="header__top__right">
                                 <div class="header__top__right__links">
                                     <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                                    <a href="./wisslist.html"><img src="img/icon/heart.png" alt=""></a>
+                                    <a href="#"><img src="img/icon/heart.png" alt=""></a>
                                 </div>
                                 <div class="header__top__right__cart">
-                                    <a href="./shoping-cart.html"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                                    <div class="cart__price">Cart: <span>0đ</span></div>
+                                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                                    <div class="cart__price">Cart: <span>$0.00</span></div>
                                 </div>
                             </div>
                         </div>
@@ -165,6 +120,7 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li><a href="./index.html">Home</a></li>
+                            <li><a href="./about.html">About</a></li>
                             <li class="active"><a href="./shop.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
@@ -172,8 +128,12 @@
                                     <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                                     <li><a href="./checkout.html">Check Out</a></li>
                                     <li><a href="./wisslist.html">Wisslist</a></li>
+                                    <li><a href="./Class.html">Class</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
+                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -215,7 +175,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>First Name<span>*</span></p>
+                                        <p>Fist Name<span>*</span></p>
                                         <input type="text">
                                     </div>
                                 </div>
@@ -276,7 +236,7 @@
                             </div>
                             <div class="checkout__input__checkbox">
                                 <label for="diff-acc">
-                                    Note about your order, e.g, special note for delivery
+                                    Note about your order, e.g, special noe for delivery
                                     <input type="checkbox" id="diff-acc">
                                     <span class="checkmark"></span>
                                 </label>
@@ -292,14 +252,14 @@
                                 <h6 class="order__title">Your order</h6>
                                 <div class="checkout__order__products">Product <span>Total</span></div>
                                 <ul class="checkout__total__products">
-                                    <li><samp>01.</samp> Vanilla salted caramel <span>20.000đ</span></li>
-                                    <li><samp>02.</samp> German chocolate <span>30.000đ</span></li>
-                                    <li><samp>03.</samp> Sweet autumn <span>55.000đ</span></li>
-                                    <li><samp>04.</samp> Cluten free mini dozen <span>36.000đ</span></li>
+                                    <li><samp>01.</samp> Vanilla salted caramel <span>$ 300.0</span></li>
+                                    <li><samp>02.</samp> German chocolate <span>$ 170.0</span></li>
+                                    <li><samp>03.</samp> Sweet autumn <span>$ 170.0</span></li>
+                                    <li><samp>04.</samp> Cluten free mini dozen <span>$ 110.0</span></li>
                                 </ul>
                                 <ul class="checkout__total__all">
-                                    <li>Subtotal <span>141.000đ</span></li>
-                                    <li>Total <span>141.000đ</span></li>
+                                    <li>Subtotal <span>$750.99</span></li>
+                                    <li>Total <span>$750.99</span></li>
                                 </ul>
                                 <div class="checkout__input__checkbox">
                                     <label for="acc-or">
@@ -308,6 +268,8 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua.</p>
                                 <div class="checkout__input__checkbox">
                                     <label for="payment">
                                         Check Payment
@@ -351,9 +313,44 @@
                         <div class="footer__logo">
                             <a href="#"><img src="img/footer-logo.png" alt=""></a>
                         </div>
-                        <p>Cảm onq các bạn rất nhiều.</p>
+                        <p>Lorem ipsum dolor amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore dolore magna aliqua.</p>
                         <div class="footer__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer__newslatter">
+                        <h6>Subscribe</h6>
+                        <p>Get latest updates and offers.</p>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit"><i class="fa fa-send-o"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <p class="copyright__text text-white"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                      </p>
+                  </div>
+                  <div class="col-lg-5">
+                    <div class="copyright__widget">
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Site Map</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập & Đăng ký</title>
+    <style>
+        /* CSS VẪN GIỮ NGUYÊN NHƯ PHIÊN BẢN TRƯỚC */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('img/hero/hero-1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .auth-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+        .tab-radio {
+            display: none;
+        }
+        .auth-header {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0e6d6;
+        }
+        .tab-label {
+            flex: 1;
+            padding: 15px 0;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            color: #b0a69a;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+        #login-radio:checked ~ .auth-header .login-label,
+        #signup-radio:checked ~ .auth-header .signup-label {
+            color: #8b4513;
+            border-bottom: 3px solid #8b4513;
+        }
+        .form-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        #login-radio:checked ~ .form-content #login-form,
+        #signup-radio:checked ~ .form-content #signup-form {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+            color: #ffb74d;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #6a4f4b;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #fffaf0;
+            font-size: 16px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        .submit-btn:hover {
+            background-color: #a0522d;
+        }
+        .link {
+            display: block;
+            margin-top: 15px;
+            color: #8b4513;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <span class="icon">🧁</span>
+        
+        <input type="radio" id="login-radio" name="auth-toggle" class="tab-radio" checked>
+        <input type="radio" id="signup-radio" name="auth-toggle" class="tab-radio">
+
+        <div class="auth-header">
+            <label for="login-radio" class="tab-label login-label">Đăng Nhập</label>
+            <label for="signup-radio" class="tab-label signup-label">Đăng Ký</label>
+        </div>
+        
+        <div class="form-content">
+            <form id="login-form" class="form-section" action="index.html">
+                <div class="form-group">
+                    <label for="login-username">Tên người dùng</label>
+                    <input type="text" id="login-username" name="username" placeholder="Nhập tên đăng nhập" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Mật khẩu</label>
+                    <input type="password" id="login-password" name="password" placeholder="Nhập mật khẩu" required>
+                </div>
+                <button type="submit" class="submit-btn">ĐĂNG NHẬP</button>
+                <a href="#" class="link">Quên mật khẩu?</a>
+            </form>
+
+            <form id="signup-form" class="form-section" action="index.html">
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="email" placeholder="Nhập địa chỉ Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-username">Tên người dùng</label>
+                    <input type="text" id="signup-username" name="username" placeholder="Chọn tên đăng nhập" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Mật khẩu</label>
+                    <input type="password" id="signup-password" name="password" placeholder="Tạo mật khẩu" required>
+                </div>
+                <button type="submit" class="submit-btn">ĐĂNG KÝ TÀI KHOẢN</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

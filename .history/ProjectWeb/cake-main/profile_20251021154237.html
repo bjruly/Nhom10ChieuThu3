@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ của tôi</title>
+    <!-- Tải Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Cấu hình Font Inter --><style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Container Chính --><div class="relative w-full min-h-screen">
+        
+        <!-- Background Hero Image --><!-- Đảm bảo file hero-1.jpg nằm cùng thư mục hoặc thay thế bằng URL ảnh hợp lệ --><div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+             style="background-image: url('img/hero/hero-1.jpg');">
+             <!-- Lớp phủ mờ (Overlay) để thông tin dễ đọc hơn --><div class="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+
+        <!-- Nội dung chính (Hiển thị ở trung tâm) --><div class="relative z-10 p-4 md:p-8 flex justify-center items-center min-h-screen">
+            <div class="w-full max-w-4xl bg-white/90 backdrop-blur-sm rounded-xl shadow-2xl p-6 md:p-10">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-6 text-center">Hồ sơ của tôi</h1>
+                
+                <!-- Phần 0: Avatar và Tên chính --><div class="flex flex-col items-center mb-10 pb-6 border-b border-gray-200">
+                    <div class="relative w-32 h-32 rounded-full overflow-hidden border-4 border-indigo-600 shadow-xl">
+                        <!-- THAY THẾ ICON BẰNG ẢNH ĐẠI DIỆN --><!-- Đảm bảo file avatar.jpg nằm cùng thư mục hoặc thay thế bằng URL ảnh hợp lệ của bạn --><img src="img/avatar.jpg" alt="Ảnh đại diện" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="text-3xl font-bold text-gray-800" id="profile-name">Đào Hữu Tài</h3>
+                        <span class="text-sm text-indigo-600 font-medium">Thành viên đã xác thực</span>
+                    </div>
+                </div>
+
+                <!-- Phần 1: Thông tin Khách hàng --><section class="mb-10 p-6 rounded-xl bg-gray-50/50 shadow-inner">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-5 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Chi tiết Tài khoản
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 text-base">
+                        
+                        <!-- Email --><div class="flex flex-col">
+                            <span class="font-medium text-gray-500">Email</span>
+                            <span class="font-semibold text-gray-800" id="profile-email">taidaoxo@gmail.com</span>
+                        </div>
+                        
+                        <!-- Số điện thoại --><div class="flex flex-col">
+                            <span class="font-medium text-gray-500">Số điện thoại</span>
+                            <span class="font-semibold text-gray-800" id="profile-phone">+84 333-588-320</span>
+                        </div>
+                        
+                        <!-- Ngày tham gia --><div class="flex flex-col">
+                            <span class="font-medium text-gray-500">Ngày tham gia</span>
+                            <span class="font-semibold text-gray-800" id="profile-join-date">23/9/2006</span>
+                        </div>
+
+                        <!-- Loại tài khoản --><div class="flex flex-col">
+                            <span class="font-medium text-gray-500">Cấp độ</span>
+                            <span class="font-semibold text-gray-800">Thành viên Chiến Tướng</span>
+                        </div>
+                        
+                    </div>
+                </section>
+
+                <!-- Phần 2: Đổi Mật khẩu --><section class="mt-10 pt-8 border-t border-gray-200">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-5 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v3h8z" />
+                        </svg>
+                        Quản lý Bảo mật
+                    </h2>
+
+                    <!-- Form chỉ là giao diện, không gửi đi (action="#") --><form id="change-password-form" action="#" class="space-y-4">
+                        
+                        <!-- Mật khẩu hiện tại --><div>
+                            <label for="current-password" class="block text-sm font-medium text-gray-700">Mật khẩu hiện tại</label>
+                            <input type="password" id="current-password" required
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out">
+                        </div>
+
+                        <!-- Mật khẩu mới --><div>
+                            <label for="new-password" class="block text-sm font-medium text-gray-700">Mật khẩu mới</label>
+                            <input type="password" id="new-password" required
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out">
+                        </div>
+
+                        <!-- Xác nhận mật khẩu mới --><div>
+                            <label for="confirm-password" class="block text-sm font-medium text-gray-700">Xác nhận mật khẩu mới</label>
+                            <input type="password" id="confirm-password" required
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out">
+                        </div>
+
+                        <!-- Vùng thông báo (có thể dùng để mô phỏng trạng thái) --><div id="message-box" class="p-3 text-sm rounded-lg text-center font-medium hidden" role="alert"></div>
+
+                        <!-- Nút Đổi mật khẩu (dùng type="button" để tránh reload trang) --><div class="pt-4">
+                            <button type="button"
+                                class="w-full sm:w-auto px-6 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition duration-150 ease-in-out transform hover:scale-[1.01] hover:shadow-lg">
+                                Cập nhật Mật khẩu
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

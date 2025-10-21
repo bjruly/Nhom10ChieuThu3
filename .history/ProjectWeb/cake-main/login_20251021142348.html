@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Muffin Ngọt Ngào</title>
+    <style>
+        /* CSS nội tuyến để đơn giản hóa */
+        body {
+            font-family: Arial, sans-serif;
+            /* Thay đổi background-color bằng background-image */
+            background-image: url('img/hero/hero-1.jpg'); /* Đảm bảo file hero-1.png nằm cùng thư mục với file HTML này */
+            background-size: cover; /* Để ảnh nền phủ toàn bộ body */
+            background-position: center; /* Căn giữa ảnh nền */
+            background-repeat: no-repeat; /* Không lặp lại ảnh nền */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.85); /* Nền form trắng hơi trong suốt để nhìn thấy background */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #4b3832; /* Màu nâu sẫm, gợi nhớ sô cô la */
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #6a4f4b; /* Màu nâu ấm */
+            font-weight: bold;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Quan trọng để padding không làm tăng chiều rộng */
+            background-color: #fffaf0; /* Gợi nhớ màu kem */
+        }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #8b4513; /* Màu nâu đất, gợi nhớ giỏ mây hoặc màu bánh */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #a0522d; /* Đậm hơn khi hover */
+        }
+        .forgot-password {
+            display: block;
+            margin-top: 15px;
+            color: #8b4513;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #ffb74d; /* Màu vàng cam, gợi nhớ vị bơ/vani */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <span class="icon">🧁</span>
+        <h2>Đăng Nhập</h2>
+        <form>
+            <div class="input-group">
+                <label for="username">Tên người dùng</label>
+                <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+            </div>
+            <button type="submit" class="login-btn">Đăng Nhập Ngay</button>
+            <a href="#" class="forgot-password">Quên mật khẩu?</a>
+        </form>
+    </div>
+</body>
+</html>

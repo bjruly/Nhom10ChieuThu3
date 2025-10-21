@@ -4024,5 +4024,70 @@ ol {
   .checkout__order__products span {
     display: none;
   }
-  
+  /* ==================================== */
+/* CẤU TRÚC MENU THẢ XUỐNG (DROPDOWN) */
+/* ==================================== */
+
+/* 1. Thiết lập vị trí tương đối cho mục cha */
+.has-dropdown {
+    position: relative; 
+}
+
+/* KHẮC PHỤC LỖI TÔ ĐEN TRÊN LIÊN KẾT CHA (Xin chào Trần Lê Gia Bảo) */
+.has-dropdown > a:focus,
+.has-dropdown > a:active {
+    outline: none !important; 
+    -webkit-tap-highlight-color: transparent; 
+    background-color: transparent !important;
+}
+
+/* 2. Thiết lập trạng thái mặc định (ẨN) cho dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; 
+    z-index: 100;
+
+    /* NỀN ĐẬM CHO CHỮ TRẮNG NỔI BẬT */
+    background-color: #333; /* Nền xám/đen đậm */
+    border: 1px solid #555;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    padding: 5px 0;
+    list-style: none;
+}
+
+/* 3. Hiển thị menu khi di chuột vào mục cha */
+.has-dropdown:hover > .dropdown {
+    display: block;
+}
+
+/* 4. Định kiểu cho các mục con trong menu */
+.dropdown li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    
+    /* MÀU CHỮ TRẮNG cho 'Hồ sơ cá nhân' và 'Đăng xuất' */
+    color: white; 
+    
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+/* Hiệu ứng di chuột (hover) cho các mục con */
+.dropdown li a:hover {
+    background-color: #555; /* Nền xám nhẹ khi hover */
+    color: #ffcc00; /* Màu nổi bật (vàng/cam) khi hover */
+}
+
+/* Định kiểu cho biểu tượng mũi tên */
+.has-dropdown > a .arrow_carrot-down {
+    color: white; /* Đảm bảo mũi tên cũng màu trắng nếu nằm trong nền đậm */
+    transition: transform 0.3s;
+}
+.has-dropdown:hover > a .arrow_carrot-down {
+    transform: rotate(180deg);
+}
 }
