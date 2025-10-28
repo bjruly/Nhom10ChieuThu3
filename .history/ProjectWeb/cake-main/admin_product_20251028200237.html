@@ -23,82 +23,82 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
   <style>
-  body {
-    background: url('img/hero/hero-1.jpg') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Montserrat', sans-serif;
-    color: #222;
-  }
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-  h2 {
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: #222;
-  }
+    h2 {
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #222;
+    }
 
-  .card {
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    padding: 25px;
-    background-color: rgba(255, 255, 255, 0.9); /* 💡 nền trắng mờ để đọc rõ trên ảnh */
-  }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 25px;
+    }
 
-  .table th {
-    background-color: #f1f3f9;
-  }
+    .table th {
+      background-color: #f1f3f9;
+    }
 
-  input[name="page"] {
-    display: none;
-  }
+    input[name="page"] {
+      display: none;
+    }
 
-  #page1Content,
-  #page2Content {
-    display: none;
-    animation: fade 0.4s ease;
-  }
+    #page1Content,
+    #page2Content {
+      display: none;
+      animation: fade 0.4s ease;
+    }
 
-  #page1:checked~.book #page1Content {
-    display: block;
-  }
+    #page1:checked~.book #page1Content {
+      display: block;
+    }
 
-  #page2:checked~.book #page2Content {
-    display: block;
-  }
+    #page2:checked~.book #page2Content {
+      display: block;
+    }
 
-  .controls {
-    text-align: center;
-    margin-top: 15px;
-  }
+    .controls {
+      text-align: center;
+      margin-top: 15px;
+    }
 
-  .controls label {
-    display: inline-block;
-    background-color: #e9ecef;
-    border-radius: 20px;
-    padding: 6px 16px;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 500;
-  }
+    .controls label {
+      display: inline-block;
+      background-color: #e9ecef;
+      border-radius: 20px;
+      padding: 6px 16px;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
 
-  #page1:checked~.controls label[for="page1"],
-  #page2:checked~.controls label[for="page2"] {
-    background-color: #0d6efd;
-    color: white;
-  }
+    #page1:checked~.controls label[for="page1"],
+    #page2:checked~.controls label[for="page2"] {
+      background-color: #0d6efd;
+      color: white;
+    }
 
-  @keyframes fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
 
-  .btn-add {
-    margin-bottom: 20px;
-  }
-</style>
+      to {
+        opacity: 1;
+      }
+    }
 
+    .btn-add {
+      margin-bottom: 20px;
+    }
   </style>
   <style>
         /* ==================================== */

@@ -23,80 +23,110 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
   <style>
-  body {
-    background: url('img/hero/hero-1.jpg') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Montserrat', sans-serif;
-    color: #222;
-  }
+  /* 🌐 Giao diện tổng thể */
+body {
+  background: url('img/hero/hero-1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+}
 
-  h2 {
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: #222;
-  }
+/* Lớp phủ sáng để chữ dễ đọc */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: -1;
+}
 
-  .card {
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    padding: 25px;
-    background-color: rgba(255, 255, 255, 0.9); /* 💡 nền trắng mờ để đọc rõ trên ảnh */
-  }
+/* 🌐 Tiêu đề & chữ */
+h1, h2, h3, h4, h5 {
+  font-family: 'Playfair Display', serif;
+  color: #0d6efd;
+  font-weight: 600;
+}
 
-  .table th {
-    background-color: #f1f3f9;
-  }
+/* 🌐 Header */
+.header {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-  input[name="page"] {
-    display: none;
-  }
+/* Menu hover */
+.header__menu ul li a {
+  transition: color 0.3s ease;
+}
+.header__menu ul li a:hover {
+  color: #0d6efd;
+}
 
-  #page1Content,
-  #page2Content {
-    display: none;
-    animation: fade 0.4s ease;
-  }
+/* 🌐 Card */
+.card {
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  background-color: rgba(255,255,255,0.95);
+  transition: transform 0.2s ease;
+  border: none;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
 
-  #page1:checked~.book #page1Content {
-    display: block;
-  }
+/* 🌐 Bảng */
+.table {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.table th {
+  background-color: #f8fafc;
+  color: #333;
+}
+.table td, .table th {
+  padding: 0.7rem;
+  vertical-align: middle;
+}
 
-  #page2:checked~.book #page2Content {
-    display: block;
-  }
+/* 🌐 Badge */
+.badge {
+  font-size: 0.85rem;
+  border-radius: 8px;
+  padding: 0.4em 0.7em;
+}
 
-  .controls {
-    text-align: center;
-    margin-top: 15px;
-  }
+/* 🌐 Nút */
+.btn-primary {
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(13,110,253,0.25);
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  box-shadow: 0 6px 16px rgba(13,110,253,0.35);
+}
 
-  .controls label {
-    display: inline-block;
-    background-color: #e9ecef;
-    border-radius: 20px;
-    padding: 6px 16px;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 500;
-  }
+/* 🌐 Container và khoảng cách */
+.container {
+  max-width: 1100px;
+}
+.card-header {
+  background: transparent;
+  border: none;
+  font-weight: 600;
+}
 
-  #page1:checked~.controls label[for="page1"],
-  #page2:checked~.controls label[for="page2"] {
-    background-color: #0d6efd;
-    color: white;
-  }
+/* 🌐 Hiệu ứng nhỏ khi load */
+.card, .table, .header {
+  transition: all 0.3s ease;
+}
 
-  @keyframes fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  .btn-add {
-    margin-bottom: 20px;
-  }
 </style>
 
   </style>
