@@ -199,7 +199,7 @@
                                 <ul>
                                     <li class="has-dropdown">
                                     <a href="./profile.html">
-                                            Xin chào <strong>Đào Hữu Tài</strong> 
+                                            Xin chào <strong>Admin</strong> 
                                             <span class="arrow_carrot-down"></span> 
                                     </a>
                                         <ul class="dropdown">
@@ -270,114 +270,137 @@
         <h5><i class="fa-solid fa-tags"></i> Danh mục sản phẩm (C001 - C010)</h5>
         <div class="table-responsive">
           <table class="table table-bordered text-center align-middle">
-            <thead class="table-light">
-              <tr>
-                <th>Mã DM</th>
-                <th>Tên danh mục</th>
-                <th>Mô tả</th>
-                <th>Số lượng SP</th>
-                <th>Trạng thái</th>
-                <th>Thao tác</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>#C001</td>
-                <td>Dozen Cupcakes</td>
-                <td>Bộ 12 chiếc cupcake đa dạng hương vị, mềm mịn và ngọt ngào, hoàn hảo cho mọi buổi tiệc hoặc làm quà tặng.</td>
-                <td>12</td>
-                <td><span class="badge bg-success">Hiển thị</span></td>
-                <td>
-                  <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button class="btn btn-secondary btn-sm btn-hide">
-                    <i class="fa fa-eye-slash"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>#C002</td>
-                <td>Gluten Free Mini Dozen</td>
-                <td>12 chiếc mini cupcake không gluten, thơm ngon tự nhiên, phù hợp cho người ăn kiêng hoặc nhạy cảm với gluten.</td>
-                <td>18</td>
-                <td><span class="badge bg-success">Hiển thị</span></td>
-                <td>
-                  <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button class="btn btn-secondary btn-sm btn-hide">
-                    <i class="fa fa-eye-slash"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>#C003</td>
-                <td>Cookie Dough</td>
-                <td>Cupcake hương cookie dough béo ngậy, phủ kem vani mịn và vụn bánh quy giòn tan.</td>
-                <td>7</td>
-                <td><span class="badge bg-secondary">Ẩn</span></td>
-                <td>
-                  <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button class="btn btn-success btn-sm btn-show">
-                    <i class="fa fa-eye"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
+  <thead class="table-light">
+  <tr>
+    <th>Mã DM</th>
+    <th>Tên danh mục</th>
+    <th>Hình ảnh</th>
+    <th>Mô tả</th>
+    <th>Loại</th>
+    <th>Trạng thái</th>
+    <th>Thao tác</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>#C001</td>
+    <td>Dozen Cupcakes</td>
+    <td>
+      <img src="img/shop/product-1.jpg" alt="Dozen Cupcakes" 
+           width="70" style="border-radius: 10px; object-fit: cover;">
+    </td>
+    <td>Bộ 12 chiếc cupcake đa dạng hương vị, mềm mịn và ngọt ngào, hoàn hảo cho mọi buổi tiệc hoặc làm quà tặng.</td>
+    <td>Cupcake</td>
+    <td><span class="badge bg-success">Hiển thị</span></td>
+    <td>
+      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
+        <i class="fa fa-edit"></i>
+      </button>
+      <button class="btn btn-secondary btn-sm btn-hide">
+        <i class="fa fa-eye-slash"></i>
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td>#C002</td>
+    <td>Gluten Free Mini Dozen</td>
+    <td>
+      <img src="img/shop/product-3.jpg" alt="Gluten Free Mini Dozen" 
+           width="70" style="border-radius: 10px; object-fit: cover;">
+    </td>
+    <td>12 chiếc mini cupcake không gluten, thơm ngon tự nhiên, phù hợp cho người ăn kiêng hoặc nhạy cảm với gluten.</td>
+    <td>Cupcake</td>
+    <td><span class="badge bg-success">Hiển thị</span></td>
+    <td>
+      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
+        <i class="fa fa-edit"></i>
+      </button>
+      <button class="btn btn-secondary btn-sm btn-hide">
+        <i class="fa fa-eye-slash"></i>
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td>#C003</td>
+    <td>Cookie Dough</td>
+    <td>
+      <img src="img/shop/product-4.jpg" alt="Cookie Dough" 
+           width="70" style="border-radius: 10px; object-fit: cover;">
+    </td>
+    <td>Cupcake hương cookie dough béo ngậy, phủ kem vani mịn và vụn bánh quy giòn tan.</td>
+    <td>Cupcake</td>
+    <td><span class="badge bg-secondary">Ẩn</span></td>
+    <td>
+      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
+        <i class="fa fa-edit"></i>
+      </button>
+      <button class="btn btn-success btn-sm btn-show">
+        <i class="fa fa-eye"></i>
+      </button>
+    </td>
+  </tr>
+</tbody>
+
+
           </table>
         </div>
       </div>
 
-      <!-- Trang 2 -->
       <div id="page2Content" class="card bg-white">
-        <h5><i class="fa-solid fa-tags"></i> Danh mục sản phẩm (C011 - C020)</h5>
-        <div class="table-responsive">
-          <table class="table table-bordered text-center align-middle">
-            <thead class="table-light">
-              <tr>
-                <th>Mã DM</th>
-                <th>Tên danh mục</th>
-                <th>Mô tả</th>
-                <th>Số lượng SP</th>
-                <th>Trạng thái</th>
-                <th>Thao tác</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>#C011</td>
-                <td>Vanilla Salted Caramel</td>
-                <td>Bánh vani mềm mịn hòa quyện cùng lớp caramel muối mặn ngọt tinh tế, tạo nên hương vị cân bằng hoàn hảo</td>
-                <td>9</td>
-                <td><span class="badge bg-success">Hiển thị</span></td>
-                <td>
-                  <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button class="btn btn-secondary btn-sm btn-hide">
-                    <i class="fa fa-eye-slash"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>#C012</td>
-                <td>German Chocolate</td>
-                <td>Cupcake chocolate đậm đà kết hợp nhân dừa và hạt óc chó truyền thống, chuẩn vị bánh Đức cổ điển.</td>
-                <td>11</td>
-                <td><span class="badge bg-secondary">Ẩn</span></td>
-                <td>
-                  <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button class="btn btn-success btn-sm btn-show">
-                    <i class="fa fa-eye"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
+  <h5><i class="fa-solid fa-tags"></i> Danh mục sản phẩm (C011 - C020)</h5>
+  <div class="table-responsive">
+    <table class="table table-bordered text-center align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Mã DM</th>
+          <th>Tên danh mục</th>
+          <th>Hình ảnh</th>
+          <th>Mô tả</th>
+          <th>Loại</th>
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#C011</td>
+          <td>Vanilla Salted Caramel</td>
+          <td>
+            <img src="img/shop/product-5.jpg" alt="Vanilla Salted Caramel" 
+                 style="width:70px; height:70px; object-fit:cover; border-radius:10px;">
+          </td>
+          <td>Bánh vani mềm mịn hòa quyện cùng lớp caramel muối mặn ngọt tinh tế, tạo nên hương vị cân bằng hoàn hảo.</td>
+          <td>Cupcake</td>
+          <td><span class="badge bg-success">Hiển thị</span></td>
+          <td>
+            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
+              <i class="fa fa-edit"></i>
+            </button>
+            <button class="btn btn-secondary btn-sm btn-hide">
+              <i class="fa fa-eye-slash"></i>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>#C012</td>
+          <td>German Chocolate</td>
+          <td>
+            <img src="img/shop/product-6.jpg" alt="German Chocolate" 
+                 style="width:70px; height:70px; object-fit:cover; border-radius:10px;">
+          </td>
+          <td>Cupcake chocolate đậm đà kết hợp nhân dừa và hạt óc chó truyền thống, chuẩn vị bánh Đức cổ điển.</td>
+          <td>Cupcake</td>
+          <td><span class="badge bg-secondary">Ẩn</span></td>
+          <td>
+            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
+              <i class="fa fa-edit"></i>
+            </button>
+            <button class="btn btn-success btn-sm btn-show">
+              <i class="fa fa-eye"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
           </table>
         </div>
       </div>
@@ -409,8 +432,12 @@
               <input type="text" class="form-control" placeholder="Nhập tên danh mục">
             </div>
             <div class="mb-3">
+              <label class="form-label">Loại</label>
+              <textarea class="form-control" rows="2" placeholder="Nhập loại"></textarea>
+            </div>
+            <div class="mb-3">
               <label class="form-label">Mô tả</label>
-              <textarea class="form-control" rows="2" placeholder="Nhập mô tả"></textarea>
+              <textarea class="form-control" rows="2"placeholder="Nhập mô tả"></textarea>
             </div>
           </form>
         </div>
@@ -438,11 +465,15 @@
             </div>
             <div class="mb-3">
               <label class="form-label">Tên danh mục</label>
-              <input type="text" class="form-control" value="Bánh kem">
+              <input type="text" class="form-control" value="Dozen Cupcakes">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Loại</label>
+              <textarea class="form-control" rows="2">Cupcake</textarea>
             </div>
             <div class="mb-3">
               <label class="form-label">Mô tả</label>
-              <textarea class="form-control" rows="2">Các loại bánh kem sinh nhật</textarea>
+              <textarea class="form-control" rows="2">Bộ 12 chiếc cupcake đa dạng hương vị, mềm mịn và ngọt ngào, hoàn hảo cho mọi buổi tiệc hoặc làm quà tặng.</textarea>
             </div>
           </form>
         </div>
