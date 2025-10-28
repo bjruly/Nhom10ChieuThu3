@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý đơn hàng </title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  <style>
+  body {
+    background: url('img/hero/hero-1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    color: #222;
+  }
+
+  h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #222;
+  }
+
+  .card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.9); /* 💡 nền trắng mờ để đọc rõ trên ảnh */
+  }
+
+  .table th {
+    background-color: #f1f3f9;
+  }
+
+  input[name="page"] {
+    display: none;
+  }
+
+  #page1Content,
+  #page2Content {
+    display: none;
+    animation: fade 0.4s ease;
+  }
+
+  #page1:checked~.book #page1Content {
+    display: block;
+  }
+
+  #page2:checked~.book #page2Content {
+    display: block;
+  }
+
+  .controls {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .controls label {
+    display: inline-block;
+    background-color: #e9ecef;
+    border-radius: 20px;
+    padding: 6px 16px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+
+  #page1:checked~.controls label[for="page1"],
+  #page2:checked~.controls label[for="page2"] {
+    background-color: #0d6efd;
+    color: white;
+  }
+
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .btn-add {
+    margin-bottom: 20px;
+  }
+</style>
+
+  </style>
+  <style>
+        /* ==================================== */
+        /* CẤU TRÚC MENU THẢ XUỐNG (DROPDOWN) */
+        /* ==================================== */
+
+        /* 1. Thiết lập vị trí tương đối cho mục cha */
+        .header__top__left ul li.has-dropdown {
+            position: relative; 
+        }
+
+        /* KHẮC PHỤC LỖI TÔ ĐEN TRÊN LIÊN KẾT CHA */
+        .header__top__left ul li.has-dropdown > a:focus,
+        .header__top__left ul li.has-dropdown > a:active {
+            /* Dùng !important để ghi đè CSS từ file style.css nếu cần */
+            outline: none !important; 
+            -webkit-tap-highlight-color: transparent; 
+            background-color: transparent !important;
+        }
+
+        /* 2. Thiết lập trạng thái mặc định (ẨN) cho dropdown */
+        .header__top__left ul li .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0; 
+            z-index: 100;
+
+            /* NỀN ĐẬM CHO CHỮ TRẮNG NỔI BẬT */
+            background-color: #333; /* Nền xám/đen đậm */
+            border: 1px solid #555;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            padding: 5px 0;
+            list-style: none; /* Loại bỏ dấu chấm */
+        }
+
+        /* 3. Hiển thị menu khi di chuột vào mục cha */
+        .header__top__left ul li.has-dropdown:hover > .dropdown {
+            display: block;
+        }
+
+        /* 4. Định kiểu cho các mục con trong menu */
+        .header__top__left ul li .dropdown li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            
+            /* MÀU CHỮ TRẮNG */
+            color: white; 
+            
+            font-size: 16px;
+            white-space: nowrap;
+        }
+
+        /* Hiệu ứng di chuột (hover) cho các mục con */
+        .header__top__left ul li .dropdown li a:hover {
+            background-color: #555; /* Nền xám nhẹ khi hover */
+            color: #ffcc00; /* Màu nổi bật khi hover */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__cart">
+            <div class="offcanvas__cart__links">
+                <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+                <a href="#"><img src="img/icon/heart.png" alt=""></a>
+            </div>
+            <div class="offcanvas__cart__item">
+                <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                <div class="cart__price">Cart: <span>0đ</span></div>
+            </div>
+        </div>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header__top__inner">
+                            <div class="header__top__left">
+                                <ul>
+                                    <li class="has-dropdown">
+                                    
+                                            Xin chào <strong>Admin</strong> 
+                                            <span class="arrow_carrot-down"></span> 
+                                    </a>
+                                        <ul class="dropdown">
+                                             
+                                            <li><a href="./admin_login.html">Log out</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__logo">
+                                <a href="#"><img src="img/logo.png" alt=""></a>
+                            </div>
+                            <div class="header__top__right">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                           <li class="active"><a href="./admin_product.html">Quản Lý Đơn Hàng</a></li>
+                            <li><a href="./admin_member.html">Quản Lý Khách Hàng</a></li>
+                              <li><a href="#">Quản Lý Kho</a>
+                                <ul class="dropdown">
+                                    <li><a href="./admin_category.html">Quản Lý Danh Mục Sản Phẩm</a></li>
+                                    <li><a href="./.html">Quản Lý Nhập Sản Phẩm</a></li>
+                                    <li><a href="./admin_selling.html">Quản Lý Giá Bán</a></li>
+                                    <li><a href="./admin_quantity.html">Quản Lý Số Lượng Tồn</a></li>
+                                    <li><a href="./admin_type.html">Quản Lý Loại Sản Phẩm</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+  <div class="container py-5">
+    <h2 class="text-center"> Quản Lý Đơn Hàng</h2>
+<!-- FORM TRA CỨU ĐƠN HÀNG (chỉ hiển thị giao diện, không hoạt động) -->
+<form class="card p-3 mb-4" style="max-width: 100%;">
+  <div class="row g-3 align-items-end">
+    <div class="col-md-4">
+      <label for="fromDate" class="form-label">Từ ngày:</label>
+      <input type="date" id="fromDate" name="fromDate" class="form-control">
+    </div>
+
+    <div class="col-md-4">
+      <label for="toDate" class="form-label">Đến ngày:</label>
+      <input type="date" id="toDate" name="toDate" class="form-control">
+    </div>
+
+    <div class="col-md-3">
+      <label for="status" class="form-label"></label>
+      <select id="status" name="status" class="form-select">
+        <option value="">-- Trạng Thái  --</option>
+        <option value="Mới đặt">Mới đặt</option>
+        <option value="Đã xử lý">Đã xử lý</option>
+        <option value="Đã giao">Đã giao</option>
+        <option value="Hủy">Hủy</option>
+      </select>
+    </div>
+
+    <div class="col-md-1 text-center">
+      <!-- Nút chỉ để hiển thị, không thực hiện hành động gì -->
+      <button type="button" class="btn btn-primary w-100">Tra cứu</button>
+    </div>
+  </div>
+</form>
+
+    <!-- Nút thêm -->
+    <div class="text-end mb-3">
+      <button class="btn btn-success btn-add" data-bs-toggle="modal" data-bs-target="#addModal">
+        <i class="fa fa-plus"></i> Thêm danh mục
+      </button>
+    </div>
+
+    <!-- Radio điều khiển -->
+    <input type="radio" name="page" id="page1" checked>
+    <input type="radio" name="page" id="page2">
+
+    <div class="book">
+      <!-- Trang 1 -->
+
+      <div id="page1Content" class="card bg-white">
+        <h5><i class="fa-solid fa-box"></i> Danh sách đơn hàng (P001 - P010)</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Mã ĐH</th>
+                <th>Tên sản phẩm</th>
+                <th>Khách hàng</th>
+                <th>Ngày đặt</th>
+                <th>Trạng thái</th>
+                <th>Chi tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>#P001</td><td>Dozen Cupcakes</td><td>Trần Nhựt Huy</td><td>12/12/2025</td><td><span class="badge bg-warning text-dark">Mới đặt</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P002</td><td>Vanilla Salted Caramel</td><td>Nguyễn Hoàng Phúc</td><td>13/07/2026</td><td><span class="badge bg-warning text-dark">Mới đặt</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P003</td><td>Sweet Autumn Leaves</td><td>Nguyễn Trung Hiếu</td><td>13/02/2024</td><td><span class="badge bg-success">Đã giao</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P004</td><td>Vanilla Salted Caramel</td><td>Bùi Nhật Hào</td><td>19/04/2025</td><td><span class="badge bg-danger">Hủy</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P005</td><td>Cookies And Cream</td><td>Trần Trung Thái</td><td>11/11/2025</td><td><span class="badge bg-success">Đã xử lý</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P006</td><td>Sweet Celtics</td><td>Nguyễn Khải Hoàn Ca</td><td>10/05/2025</td><td><span class="badge bg-warning text-dark">Mới đặt</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P007</td><td>Mississippi Mud</td><td>Trần Lê Gia Bảo</td><td>13/03/2036</td><td><span class="badge bg-success">Đã giao</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P008</td><td>German Chocolate</td><td>Đào Hữu Tài</td><td>01/01/2020</td><td><span class="badge bg-success">Đã xử lý</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P009</td><td>Vegan/Gluten Free</td><td>Trịnh Trần Phương Tuấn</td><td>12/04/2022</td><td><span class="badge bg-danger">Hủy</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P010</td><td>Dulce De Leche</td><td>Nguyễn Thị Mai</td><td>08/01/2023</td><td><span class="badge bg-success">Đã giao</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Trang 2 -->
+      <div id="page2Content" class="card bg-white">
+        <h5><i class="fa-solid fa-box-archive"></i> Danh sách đơn hàng (P011 - P020)</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Mã ĐH</th>
+                <th>Tên sản phẩm</th>
+                <th>Khách hàng</th>
+                <th>Ngày đặt</th>
+                <th>Trạng thái</th>
+                <th>Chi tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>#P011</td><td>Vanilla Salted Caramel</td><td>Trần Nhựt Huy</td><td>12/12/2025</td><td><span class="badge bg-warning text-dark">Mới đặt</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P012</td><td>Sweet Celtics</td><td>Nguyễn Hoàng Phúc</td><td>13/07/2026</td><td><span class="badge bg-warning text-dark">Mới đặt</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P013</td><td>Dulce De Leche</td><td>Nguyễn Trung Hiếu</td><td>13/02/2024</td><td><span class="badge bg-success">Đã giao</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P014</td><td>Cookies And Cream</td><td>Bùi Nhật Hào</td><td>19/04/2025</td><td><span class="badge bg-danger">Hủy</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P015</td><td>Dozen Cupcakes</td><td>Trần Trung Thái</td><td>11/11/2025</td><td><span class="badge bg-success">Đã xử lý</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P016</td><td>German Chocolate</td><td>Nguyễn Khải Hoàn Ca</td><td>10/05/2025</td><td><span class="badge bg-warning text-dark">Mới đặt</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P017</td><td>Vanilla Salted Caramel</td><td>Trần Lê Gia Bảo</td><td>13/03/2036</td><td><span class="badge bg-success">Đã giao</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P018</td><td>Cookie Dough</td><td>Đào Hữu Tài</td><td>01/01/2020</td><td><span class="badge bg-success">Đã xử lý</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P019</td><td>Dulce De Leche</td><td>Trịnh Trần Phương Tuấn</td><td>12/04/2022</td><td><span class="badge bg-danger">Hủy</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P020</td><td>Sweet Autumn Leaves</td><td>Nguyễn Thị Mai</td><td>08/01/2023</td><td><span class="badge bg-success">Đã giao</span></td><td><a href="#" class="btn btn-primary btn-sm">Xem</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01ec7763335c879a26f27754b885094f09cf59a2
+    <!-- Nút chuyển trang -->
+    <div class="controls">
+      <label for="page1">Trang 1</label>
+      <label for="page2">Trang 2</label>
+    </div>
+  </div>
+<!-- Js Plugins -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.barfiller.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
