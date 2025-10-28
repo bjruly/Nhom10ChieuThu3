@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Cake Template">
+    <meta name="keywords" content="Cake, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        /* ==================================== */
+        /* CẤU TRÚC MENU THẢ XUỐNG (DROPDOWN) */
+        /* ==================================== */
+
+        /* 1. Thiết lập vị trí tương đối cho mục cha */
+        .header__top__left ul li.has-dropdown {
+            position: relative; 
+        }
+
+        /* KHẮC PHỤC LỖI TÔ ĐEN TRÊN LIÊN KẾT CHA */
+        .header__top__left ul li.has-dropdown > a:focus,
+        .header__top__left ul li.has-dropdown > a:active {
+            /* Dùng !important để ghi đè CSS từ file style.css nếu cần */
+            outline: none !important; 
+            -webkit-tap-highlight-color: transparent; 
+            background-color: transparent !important;
+        }
+
+        /* 2. Thiết lập trạng thái mặc định (ẨN) cho dropdown */
+        .header__top__left ul li .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0; 
+            z-index: 100;
+
+            /* NỀN ĐẬM CHO CHỮ TRẮNG NỔI BẬT */
+            background-color: #333; /* Nền xám/đen đậm */
+            border: 1px solid #555;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            padding: 5px 0;
+            list-style: none; /* Loại bỏ dấu chấm */
+        }
+
+        /* 3. Hiển thị menu khi di chuột vào mục cha */
+        .header__top__left ul li.has-dropdown:hover > .dropdown {
+            display: block;
+        }
+
+        /* 4. Định kiểu cho các mục con trong menu */
+        .header__top__left ul li .dropdown li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            
+            /* MÀU CHỮ TRẮNG */
+            color: white; 
+            
+            font-size: 16px;
+            white-space: nowrap;
+        }
+
+        /* Hiệu ứng di chuột (hover) cho các mục con */
+        .header__top__left ul li .dropdown li a:hover {
+            background-color: #555; /* Nền xám nhẹ khi hover */
+            color: #ffcc00; /* Màu nổi bật khi hover */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__cart">
+            <div class="offcanvas__cart__links">
+                <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+                <a href="#"><img src="img/icon/heart.png" alt=""></a>
+            </div>
+            <div class="offcanvas__cart__item">
+                <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                <div class="cart__price">Cart: <span>0đ</span></div>
+            </div>
+        </div>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header__top__inner">
+                            <div class="header__top__left">
+                                <ul>
+                                    <li class="has-dropdown">
+                                    <a href="./profile.html">
+                                            Xin chào <strong>Đào Hữu Tài</strong> 
+                                            <span class="arrow_carrot-down"></span> 
+                                    </a>
+                                        <ul class="dropdown">
+                                            <li><a href="./profile.html">My Profile</a></li> 
+                                            <li><a href="./register.html">Log out</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__logo">
+                                <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            </div>
+                            <div class="header__top__right">
+                                <div class="header__top__right__links">
+                                    <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+                                    <a href="./wisslist.html"><img src="img/icon/heart.png" alt=""></a>
+                                </div>
+                                <div class="header__top__right__cart">
+                                    <a href="./shoping-cart.html"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                                    <div class="cart__price">Cart: <span>0đ</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a href="./index.html">Quan Lý Đơn Hàng</a></li>
+                            <li><a href="./shop.html">Quản Lý Khách Hàng</a></li>
+                            <li><a href="#">Quản Lý Kho</a>
+                                <ul class="dropdown">
+                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./wisslist.html">Wisslist</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- About Section End -->
+
+   
+
+<!-- Js Plugins -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.barfiller.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+</html>
+
+
+<div class="container py-5" style="min-height: 50px">
+      <h2 class="mb-4 text-center text-black">Quản Lý đơn hàng</h2>
+
+      <div class="p-4 p-lg-5 border bg-white rounded-3 shadow-sm">
+        <input type="radio" name="page" id="page1" checked />
+        <input type="radio" name="page" id="page2" />
+        <input type="radio" name="page" id="page3" />
+        <div class="book">
+          <div class="page page1">
+            <table
+              class="table table-bordered text-center align-middle page page1"
+            >
+              <thead class="table-light">
+                <tr>
+                  <th>Mã ĐH</th>
+                  <th>Tên sản phẩm</th>
+                  <th>Tên Khách hàng</th>
+                  <th>Ngày Đặt</th>
+                  <th>Trạng thái</th>
+                  <th>Chi tiết</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#P001</td>
+                  <td>Dozen Cupcakes</td>
+                  <td>Trần Nhựt Huy</td>
+                  <td>12/12/2025</td>
+                  <td>
+                    <span class="badge bg-warning text-dark">Mới đặt</span>
+                  </td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>#P002</td>
+                  <td>Vanilla Salted Caramel</td>
+                  <td>Nguyễn Hoàng Phúc</td>
+                  <td>13/07/2026</td>
+                  <td>
+                    <span class="badge bg-warning text-dark">Mới đặt</span>
+                  </td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>#P003</td>
+                  <td>Sweet Autumn Leaves</td>
+                  <td>Nguyễn Trung Hiếu</td>
+                  <td>02/13/2024</td>
+                  <td><span class="badge bg-success">Đã giao</span></td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>#P004</td>
+                  <td>Vanilla Salted Caramel</td>
+                  <td>Bùi Nhật Hào</td>
+                  <td>19/04/2025</td>
+                  <td><span class="badge bg-danger">Hủy</span></td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none">Xem</a
+                    >
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>#P005</td>
+                  <td>Cookies And Cream</td>
+                  <td>Trần Trung Thái</td>
+                  <td>11/11/2025</td>
+                  <td>
+                    <span class="badge bg-success">Đã xử lý</span>
+                  </td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>#P006</td>
+                  <td>Sweet Celtics</td>
+                  <td>Nguyễn Khải Hoàn Ca</td>
+                  <td>10/05/2025</td>
+                  <td>
+                    <span class="badge bg-warning text-dark">Mới đặt</span>
+                  </td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>#P007</td>
+                  <td>Mississippi Mud</td>
+                  <td>Trần Lê Gia Bảo</td>
+                  <td>13/03/2036</td>
+                  <td><span class="badge bg-success">Đã giao</span></td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>#P008</td>
+                  <td>German Chocolate</td>
+                  <td>Đào Hữu Tài</td>
+                  <td>01/01/2020</td>
+                  <td><span class="badge bg-success">Đã xử lý</span></td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>#P009</td>
+                  <td>Vagan/Gluten Free</td>
+                  <td>Trịnh Trần Phương Tuấn</td>
+                  <td>12/04/2022</td>
+                  <td><span class="badge bg-danger">Hủy</span></td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>#P010</td>
+                  <td>Dulce De Leche</td>
+                  <td>Nguyễn Thị Mai</td>
+                  <td>08/01/2023</td><td><span class="badge bg-success">Đã giao</span></td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="page page2">
+            <table
+              class="table table-bordered text-center align-middle page page2"
+            >
+              <thead class="table-light">
+                <tr>
+                  <th>Mã ĐH</th>
+                  <th>Tên sản phẩm</th>
+                  <th>Tên Khách hàng</th>
+                  <th>Ngày Đặt</th>
+                  <th>Trạng thái</th>
+                  <th>Chi tiết</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#P011</td>
+                  <td>Vanilla Salted Caramel</td>
+                  <td>Trần Nhựt Huy</td>
+                  <td>12/12/2025</td>
+                  <td>
+                    <span class="badge bg-warning text-dark">Mới đặt</span>
+                  </td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>#P012</td>
+                  <td>Sweet Celtics</td>
+                  <td>Nguyễn Hoàng Phúc</td>
+                  <td>13/07/2026</td>
+                  <td>
+                    <span class="badge bg-warning text-dark">Mới đặt</span>
+                  </td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>#P013</td>
+                  <td>Dulce De Leche</td>
+                  <td>Nguyễn Trung Hiếu</td>
+                  <td>02/13/2024</td>
+                  <td><span class="badge bg-success">Đã giao</span></td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>#P014</td>
+                  <td>Cookies And Cream</td>
+                  <td>Bùi Nhật Hào</td>
+                  <td>19/04/2025</td>
+                  <td><span class="badge bg-danger">Hủy </span></td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>#P015</td>
+                  <td>Dozen Cupcakes/td>
+                  <td>Trần Trung Thái</td>
+                  <td>11/11/2025</td>
+                  <td>
+                    <span class="badge bg-success">Đã xử lý</span>
+                  </td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>#P016</td>
+                  <td>German Chocolate</td>
+                  <td>Nguyễn Khải Hoàn Ca</td>
+                  <td>10/05/2025</td>
+                  <td>
+                    <span class="badge bg-warning text-dark">Mới đặt</span>
+                  </td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>#P017</td>
+                  <td>Vanilla Salted Caramel</td>
+                  <td>Trần Lê Gia Bảo</td>
+                  <td>13/03/2036</td>
+                  <td><span class="badge bg-success">Đã giao</span></td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>#P018</td>
+                  <td>Cookie Dough</td>
+                  <td>Đào Hữu Tài</td>
+                  <td>01/01/2020</td>
+                  <td><span class="badge bg-success">Đã xử lý</span></td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>#P019</td>
+                  <td>Dulce De Leche</td>
+                  <td>Trịnh Trần Phương Tuấn</td>
+                  <td>12/04/2022</td>
+                  <td><span class="badge bg-danger">Hủy</span></td>
+                  <td>
+                    <a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>#P020</td>
+                  <td>Sweet Autumn Leaves</td>
+                  <td>Nguyễn Thị Mai</td>
+                  <td>08/01/2023</td>
+                  <td><span class="badge bg-success">Đã giao</span></td><a
+                      href="orderdetails.html"
+                      class="badge bg-primary text-decoration-none"
+                      >Xem</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- End Customer Management Section -->
+
+        <div class="controls">
+          <label for="page1">1</label>
+          <label for="page2">2</label>
+
+          <label for="next">></label>
+        </div>
+      </div>
+    </div>
+
+
+
+
+

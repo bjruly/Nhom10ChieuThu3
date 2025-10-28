@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Cake Template">
+  <meta name="keywords" content="Cake, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quản lý đơn hàng</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+  <link rel="stylesheet" href="css/barfiller.css" type="text/css">
+  <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    /* ==================================== */
+    /* MENU THẢ XUỐNG (DROPDOWN) */
+    /* ==================================== */
+    .header__top__left ul li.has-dropdown {
+      position: relative;
+    }
+
+    .header__top__left ul li.has-dropdown>a:focus,
+    .header__top__left ul li.has-dropdown>a:active {
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent;
+      background-color: transparent !important;
+    }
+
+    .header__top__left ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 100;
+      background-color: #333;
+      border: 1px solid #555;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      min-width: 200px;
+      padding: 5px 0;
+      list-style: none;
+    }
+
+    .header__top__left ul li.has-dropdown:hover>.dropdown {
+      display: block;
+    }
+
+    .header__top__left ul li .dropdown li a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      white-space: nowrap;
+    }
+
+    .header__top__left ul li .dropdown li a:hover {
+      background-color: #555;
+      color: #ffcc00;
+    }
+
+    /* ==================================== */
+    /* GIAO DIỆN QUẢN LÝ ĐƠN HÀNG */
+    /* ==================================== */
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    h2 {
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 25px;
+    }
+
+    .table th {
+      background-color: #f1f3f9;
+    }
+
+    input[name="page"] {
+      display: none;
+    }
+
+    #page1Content,
+    #page2Content {
+      display: none;
+      animation: fade 0.4s ease;
+    }
+
+    #page1:checked~.book #page1Content {
+      display: block;
+    }
+
+    #page2:checked~.book #page2Content {
+      display: block;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .controls label {
+      display: inline-block;
+      background-color: #e9ecef;
+      border-radius: 20px;
+      padding: 6px 16px;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    #page1:checked~.controls label[for="page1"],
+    #page2:checked~.controls label[for="page2"] {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Header Section Begin -->
+  <header class="header">
+    <div class="header__top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="header__top__inner">
+              <div class="header__top__left">
+                <ul>
+                  <li class="has-dropdown">
+                    <a href="./profile.html">
+                      Xin chào <strong>Đào Hữu Tài</strong>
+                      <span class="arrow_carrot-down"></span>
+                    </a>
+                    <ul class="dropdown">
+                      <li><a href="./profile.html">My Profile</a></li>
+                      <li><a href="./register.html">Log out</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="header__logo">
+                <a href="./index.html"><img src="img/logo.png" alt=""></a>
+              </div>
+              <div class="header__top__right">
+                <div class="header__top__right__links">
+                  <a href="./wisslist.html"><img src="img/icon/heart.png" alt=""></a>
+                </div>
+                <div class="header__top__right__cart">
+                  <a href="./shoping-cart.html"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                  <div class="cart__price">Cart: <span>0đ</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="header__menu mobile-menu">
+            <ul>
+              <li class="active"><a href="./index.html">Quản Lý Đơn Hàng</a></li>
+              <li><a href="./shop.html">Quản Lý Khách Hàng</a></li>
+              <li><a href="#">Quản Lý Kho</a>
+                <ul class="dropdown">
+                  <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                  <li><a href="./checkout.html">Check Out</a></li>
+                  <li><a href="./wisslist.html">Wisslist</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Tra cứu đơn hàng</h2>
+
+    <div class="card p-4 mb-4">
+      <form class="row g-3 align-items-end">
+        <div class="col-md-4">
+          <label for="fromDate" class="form-label">Từ ngày</label>
+          <input type="date" class="form-control" id="fromDate">
+        </div>
+        <div class="col-md-4">
+          <label for="toDate" class="form-label">Đến ngày</label>
+          <input type="date" class="form-control" id="toDate">
+        </div>
+        <div class="col-md-4">
+          <label for="status" class="form-label">Trạng thái</label>
+          <select class="form-select" id="status">
+            <option value="">-- Tất cả --</option>
+            <option value="new">Mới đặt</option>
+            <option value="processed">Đã xử lý</option>
+            <option value="delivered">Đã giao</option>
+            <option value="canceled">Hủy</option>
+          </select>
+        </div>
+        <div class="col-12 text-center">
+          <button type="button" class="btn btn-primary">Tra cứu</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Bảng kết quả -->
+    <div class="card p-3">
+      <h5>Kết quả tra cứu</h5>
+      <div class="table-responsive">
+        <table class="table table-bordered text-center align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Mã ĐH</th>
+              <th>Tên sản phẩm</th>
+              <th>Khách hàng</th>
+              <th>Ngày đặt</th>
+              <th>Trạng thái</th>
+              <th>Chi tiết</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#P001</td>
+              <td>Dozen Cupcakes</td>
+              <td>Trần Nhựt Huy</td>
+              <td>12/12/2025</td>
+              <td><span class="badge bg-warning text-dark">Mới đặt</span></td>
+              <td><a href="#" class="btn btn-primary btn-sm">Xem</a></td>
+            </tr>
+            <tr>
+              <td>#P003</td>
+              <td>Sweet Autumn Leaves</td>
+              <td>Nguyễn Trung Hiếu</td>
+              <td>13/02/2024</td>
+              <td><span class="badge bg-success">Đã giao</span></td>
+              <td><a href="#" class="btn btn-primary btn-sm">Xem</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h2 class="text-center">Quản Lý Đơn Hàng</h2>
+
+    <input type="radio" name="page" id="page1" checked>
+    <input type="radio" name="page" id="page2">
+
+    <div class="book">
+      <div id="page1Content" class="card bg-white">
+        <h5><i class="fa-solid fa-box"></i> Danh sách đơn hàng (P001 - P010)</h5>
+        <!-- Giữ nguyên bảng đơn hàng của bạn -->
+        <!-- ... -->
+      </div>
+
+      <div id="page2Content" class="card bg-white">
+        <h5><i class="fa-solid fa-box-archive"></i> Danh sách đơn hàng (P011 - P020)</h5>
+        <!-- Giữ nguyên bảng đơn hàng của bạn -->
+        <!-- ... -->
+      </div>
+    </div>
+
+    <div class="controls">
+      <label for="page1">Trang 1</label>
+      <label for="page2">Trang 2</label>
+    </div>
+  </div>
+
+  <!-- Js Plugins -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.nice-select.min.js"></script>
+  <script src="js/jquery.barfiller.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.nicescroll.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
