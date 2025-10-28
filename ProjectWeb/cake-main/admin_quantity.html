@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tồn kho</title>
+
+    <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style>
+        /* CSS cho menu dropdown trong header */
+        .header__top__left ul li.has-dropdown {
+            position: relative;
+        }
+        .header__top__left ul li .dropdown {
+            display: none; position: absolute; top: 100%; left: 0; z-index: 100;
+            background-color: #333; border: 1px solid #555; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            min-width: 200px; padding: 5px 0; list-style: none;
+        }
+        .header__top__left ul li.has-dropdown:hover > .dropdown {
+            display: block;
+        }
+        .header__top__left ul li .dropdown li a {
+            display: block; padding: 10px 15px; text-decoration: none; color: white;
+            font-size: 16px; white-space: nowrap;
+        }
+        .header__top__left ul li .dropdown li a:hover {
+            background-color: #555; color: #ffcc00;
+        }
+
+        /* CSS chung cho trang */
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Montserrat', sans-serif;
+        }
+        h2 {
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #222;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            padding: 25px;
+        }
+        .table th {
+            background-color: #f1f3f9;
+            font-weight: 600;
+        }
+        .alert-warning {
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+        }
+        </style>
+        
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header__top__inner">
+                            <div class="header__top__left">
+                                <ul>
+                                    <li class="has-dropdown">
+                                    <a href="./profile.html">
+                                            Xin chào <strong>Admin</strong> 
+                                            <span class="arrow_carrot-down"></span> 
+                                    </a>
+                                        <ul class="dropdown">
+                                            <li><a href="./profile.html">My Profile</a></li> 
+                                            <li><a href="./register.html">Log out</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__logo">
+                                <a href="./#.html"><img src="img/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li><a href="./admin_product.html">Quản Lý Đơn Hàng</a></li>
+                            <li><a href="./admin_member.html">Quản Lý Khách Hàng</a></li>
+                            <li class="active"><a href="#">Quản Lý Kho</a>
+                                <ul class="dropdown">
+                                    <li><a href="./admin_category.html">Quản Lý Danh Mục Sản Phẩm</a></li>
+                                    <li><a href="./checkout.html">Quản Lý Nhập Sản Phẩm</a></li>
+                                    <li><a href="./admin_selling.html">Quản Lý Giá Bán</a></li>
+                                    <li><a href="./admin_quantity.html">Quản Lý Số Lượng Tồn</a></li>
+                                    <li><a href="./admin_type.html">Quản Lý Loại Sản Phẩm</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+    <div class="container py-5">
+        <h2 class="text-center">Quản Lý Tồn Kho</h2>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <h5><i class="fa-solid fa-search"></i> Tra cứu tồn kho tại một thời điểm</h5>
+                    <div class="row g-3 align-items-end mt-2">
+                        <div class="col-md-4">
+                            <label for="productName" class="form-label">Tên sản phẩm</label>
+                            <input type="text" class="form-control" id="productName" placeholder="VD: Dozen Cupcakes">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="productCategory" class="form-label">Loại sản phẩm</label>
+                            <select id="productCategory" class="form-select">
+                                <option selected>Chọn loại...</option>
+                                <option>Bánh Cupcake</option>
+                                <option>Bánh Kem</option>
+                                <option>Bánh Mì</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="lookupDate" class="form-label">Ngày tra cứu</label>
+                            <input type="date" class="form-control" id="lookupDate">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary w-100">Tra cứu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="card">
+                     <h5><i class="fa-solid fa-triangle-exclamation"></i> Cảnh báo sản phẩm sắp hết hàng</h5>
+                     <div class="alert alert-warning mt-2 mb-0" role="alert">
+                         <ul class="mb-0">
+                             <li><strong>Cookies And Cream:</strong> Chỉ còn 5 cái</li>
+                             <li><strong>German Chocolate:</strong> Chỉ còn 8 cái</li>
+                         </ul>
+                     </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                 <div class="card">
+                    <h5><i class="fa-solid fa-chart-line"></i> Tra cứu Nhập - Xuất - Tồn</h5>
+                    <div class="row g-3 align-items-end mt-2">
+                        <div class="col-md-5">
+                            <label for="productLookup" class="form-label">Tên sản phẩm</label>
+                            <input type="text" class="form-control" id="productLookup" placeholder="Nhập tên sản phẩm cần xem">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="startDate" class="form-label">Từ ngày</label>
+                            <input type="date" class="form-control" id="startDate">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="endDate" class="form-label">Đến ngày</label>
+                            <input type="date" class="form-control" id="endDate">
+                        </div>
+                         <div class="col-md-3">
+                            <button type="submit" class="btn btn-success w-100">Xem báo cáo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card bg-white">
+            <h5><i class="fa-solid fa-boxes-stacked"></i> Danh sách sản phẩm tồn kho</h5>
+            <div class="table-responsive mt-3">
+                <table class="table table-bordered text-center align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Mã SP</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Loại sản phẩm</th>
+                            <th>Số lượng tồn</th>
+                            <th>Đơn vị tính</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>#SP001</td><td>Dozen Cupcakes</td><td>Bánh Cupcake</td><td>50</td><td>Hộp</td><td><span class="badge bg-success">Còn hàng</span></td><td><a href="#" class="btn btn-info btn-sm">Chi tiết</a></td></tr>
+                        <tr><td>#SP002</td><td>Vanilla Salted Caramel</td><td>Bánh Kem</td><td>25</td><td>Cái</td><td><span class="badge bg-success">Còn hàng</span></td><td><a href="#" class="btn btn-info btn-sm">Chi tiết</a></td></tr>
+                        <tr><td>#SP003</td><td>Sweet Autumn Leaves</td><td>Bánh Cupcake</td><td>0</td><td>Cái</td><td><span class="badge bg-danger">Hết hàng</span></td><td><a href="#" class="btn btn-info btn-sm">Chi tiết</a></td></tr>
+                        <tr><td>#SP004</td><td>Cookies And Cream</td><td>Bánh Kem</td><td>5</td><td>Cái</td><td><span class="badge bg-warning text-dark">Sắp hết</span></td><td><a href="#" class="btn btn-info btn-sm">Chi tiết</a></td></tr>
+                        <tr><td>#SP005</td><td>Mississippi Mud</td><td>Bánh Cupcake</td><td>30</td><td>Cái</td><td><span class="badge bg-success">Còn hàng</span></td><td><a href="#" class="btn btn-info btn-sm">Chi tiết</a></td></tr>
+                        <tr><td>#SP006</td><td>German Chocolate</td><td>Bánh Kem</td><td>8</td><td>Cái</td><td><span class="badge bg-warning text-dark">Sắp hết</span></td><td><a href="#" class="btn btn-info btn-sm">Chi tiết</a></td></tr>
+                        <tr><td>#SP007</td><td>Vegan/Gluten Free</td><td>Bánh Mì</td><td>15</td><td>Ổ</td><td><span class="badge bg-success">Còn hàng</span></td><td><a href="#" class="btn btn-info btn-sm">Chi tiết</a></td></tr>
+                        <tr><td>#SP008</td><td>Dulce De Leche</td><td>Bánh Cupcake</td><td>22</td><td>Hộp</td><td><span class="badge bg-success">Còn hàng</span></td><td><a href="#" class="btn btn-info btn-sm">Chi tiết</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.barfiller.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
