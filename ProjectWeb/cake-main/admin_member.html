@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Khách hàng</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h2 {
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #222;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            padding: 25px;
+        }
+
+        .table th {
+            background-color: #f1f3f9;
+            vertical-align: middle;
+        }
+        
+        .table td {
+             vertical-align: middle;
+        }
+
+        /* Dropdown Menu CSS */
+        .header__top__left ul li.has-dropdown { position: relative; }
+        .header__top__left ul li .dropdown { display: none; position: absolute; top: 100%; left: 0; z-index: 100; background-color: #333; border: 1px solid #555; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); min-width: 200px; padding: 5px 0; list-style: none; }
+        .header__top__left ul li.has-dropdown:hover > .dropdown { display: block; }
+        .header__top__left ul li .dropdown li a { display: block; padding: 10px 15px; text-decoration: none; color: white; font-size: 16px; white-space: nowrap; }
+        .header__top__left ul li .dropdown li a:hover { background-color: #555; color: #ffcc00; }
+        
+        .action-buttons .btn {
+            margin-right: 5px;
+            margin-bottom: 5px; /* Thêm khoảng cách cho các nút trên màn hình nhỏ */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header__top__inner">
+                            <div class="header__top__left">
+                                <ul>
+                                    <li class="has-dropdown">
+                                        <a href="./profile.html">
+                                            Xin chào <strong>Admin</strong> 
+                                            <span class="arrow_carrot-down"></span> 
+                                        </a>
+                                        <ul class="dropdown">
+                                            <li><a href="./profile.html">My Profile</a></li> 
+                                            <li><a href="./register.html">Log out</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__logo">
+                                <a href="./#.html"><img src="img/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li><a href="./admin_product.html">Quản Lý Đơn Hàng</a></li>
+                            <li class="active"><a href="./admin_member.html">Quản Lý Khách Hàng</a></li>
+                            <li><a href="#">Quản Lý Kho</a>
+                                <ul class="dropdown">
+                                    <li><a href="./admin_category.html">Quản Lý Danh Mục Sản Phẩm</a></li>
+                                    <li><a href="./admin_import.html">Quản Lý Nhập Sản Phẩm</a></li>
+                                    <li><a href="./admin_selling.html">Quản Lý Giá Bán</a></li>
+                                    <li><a href="./admin_quantity.html">Quản Lý Số Lượng Tồn</a></li>
+                                    <li><a href="./admin_type.html">Quản Lý Loại Sản Phẩm</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container py-5">
+        <h2 class="text-center">Quản lý Khách hàng</h2>
+
+        <div class="card">
+             <div class="input-group">
+                <input type="text" class="form-control" placeholder="Tìm kiếm khách hàng (tên, email, SĐT)...">
+                <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i> Tìm kiếm</button>
+            </div>
+        </div>
+
+        <div class="card bg-white">
+            <h5><i class="fa-solid fa-users"></i> Danh sách khách hàng</h5>
+            <div class="table-responsive mt-3">
+                <table class="table table-bordered text-center align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Mã KH</th>
+                            <th>Họ và Tên</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#KH001</td>
+                            <td>Trần Nhựt Huy</td>
+                            <td>huytn@example.com</td>
+                            <td>0901234567</td>
+                            <td>123 Nguyễn Văn Cừ, Q.5, TP.HCM</td>
+                            <td><span class="badge bg-success">Hoạt động</span></td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#resetPasswordModal">
+                                    <i class="fa-solid fa-key"></i> Reset MK
+                                </button>
+                                <button class="btn btn-danger btn-sm btn-lock">
+                                    <i class="fa-solid fa-lock"></i> Khóa
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#KH002</td>
+                            <td>Nguyễn Hoàng Phúc</td>
+                            <td>phucnh@example.com</td>
+                            <td>0987654321</td>
+                            <td>456 Lê Lợi, Q.1, TP.HCM</td>
+                            <td><span class="badge bg-danger">Đã khóa</span></td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#resetPasswordModal">
+                                    <i class="fa-solid fa-key"></i> Reset MK
+                                </button>
+                                <button class="btn btn-success btn-sm btn-unlock">
+                                    <i class="fa-solid fa-unlock"></i> Mở khóa
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#KH003</td>
+                            <td>Đào Hữu Tài</td>
+                            <td>taidh@example.com</td>
+                            <td>0912345678</td>
+                            <td>789 An Dương Vương, Q.8, TP.HCM</td>
+                            <td><span class="badge bg-success">Hoạt động</span></td>
+                             <td class="action-buttons">
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#resetPasswordModal">
+                                    <i class="fa-solid fa-key"></i> Reset MK
+                                </button>
+                                <button class="btn btn-danger btn-sm btn-lock">
+                                    <i class="fa-solid fa-lock"></i> Khóa
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title" id="resetPasswordModalLabel"><i class="fa-solid fa-triangle-exclamation"></i> Xác nhận Reset Mật khẩu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn reset mật khẩu cho khách hàng này không? Mật khẩu mới sẽ được gửi đến email của họ.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-warning">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.barfiller.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Script xử lý khóa/mở khóa tài khoản
+        document.addEventListener('click', function(e) {
+            // Khi nhấn nút Khóa
+            const lockBtn = e.target.closest('.btn-lock');
+            if (lockBtn) {
+                const row = lockBtn.closest('tr');
+                const badge = row.querySelector('.badge');
+                
+                // Cập nhật badge
+                badge.classList.remove('bg-success');
+                badge.classList.add('bg-danger');
+                badge.textContent = 'Đã khóa';
+
+                // Thay đổi nút Khóa thành Mở khóa
+                lockBtn.innerHTML = '<i class="fa-solid fa-unlock"></i> Mở khóa';
+                lockBtn.classList.remove('btn-danger', 'btn-lock');
+                lockBtn.classList.add('btn-success', 'btn-unlock');
+            }
+
+            // Khi nhấn nút Mở khóa
+            const unlockBtn = e.target.closest('.btn-unlock');
+            if (unlockBtn) {
+                const row = unlockBtn.closest('tr');
+                const badge = row.querySelector('.badge');
+
+                // Cập nhật badge
+                badge.classList.remove('bg-danger');
+                badge.classList.add('bg-success');
+                badge.textContent = 'Hoạt động';
+
+                // Thay đổi nút Mở khóa thành Khóa
+                unlockBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Khóa';
+                unlockBtn.classList.remove('btn-success', 'btn-unlock');
+                unlockBtn.classList.add('btn-danger', 'btn-lock');
+            }
+        });
+    </script>
+</body>
+</html>
