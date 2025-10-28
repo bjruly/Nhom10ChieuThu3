@@ -4079,3 +4079,41 @@ ol {
     color: #333;
 }
 
+/*///////*/
+/* Ẩn tất cả hàng mặc định */
+tbody tr {
+  display: none;
+}
+
+/* Hiển thị tất cả khi chọn "Tất cả" */
+input[value="all"]:checked ~ .book tbody tr {
+  display: table-row;
+}
+
+/* Hiển thị theo từng trạng thái */
+input[value="moi"]:checked ~ .book tbody tr:has(.badge.bg-warning) {
+  display: table-row;
+}
+
+input[value="giaohang"]:checked ~ .book tbody tr:has(.badge.bg-success) {
+  display: table-row;
+}
+
+input[value="huy"]:checked ~ .book tbody tr:has(.badge.bg-danger) {
+  display: table-row;
+}
+
+/* Trang trí bộ lọc */
+.filter label {
+  margin: 0 10px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.filter input[type="radio"] {
+  margin-right: 5px;
+}
+
+
+
+

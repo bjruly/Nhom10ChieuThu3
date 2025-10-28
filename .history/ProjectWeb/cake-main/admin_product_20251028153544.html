@@ -246,8 +246,8 @@
     </header>
   <div class="container py-5">
     <h2 class="text-center"> Quản Lý Đơn Hàng</h2>
-<!-- FORM TRA CỨU ĐƠN HÀNG (chỉ hiển thị giao diện, không hoạt động) -->
-<form class="card p-3 mb-4" style="max-width: 100%;">
+<!-- FORM TRA CỨU ĐƠN HÀNG -->
+<form action="admin_order_search.html" method="get" class="card p-3 mb-4" style="max-width: 100%;">
   <div class="row g-3 align-items-end">
     <div class="col-md-4">
       <label for="fromDate" class="form-label">Từ ngày:</label>
@@ -260,9 +260,9 @@
     </div>
 
     <div class="col-md-3">
-      <label for="status" class="form-label"></label>
+      <label for="status" class="form-label">Tình trạng:</label>
       <select id="status" name="status" class="form-select">
-        <option value="">-- Trạng Thái  --</option>
+        <option value="">-- Tất cả --</option>
         <option value="Mới đặt">Mới đặt</option>
         <option value="Đã xử lý">Đã xử lý</option>
         <option value="Đã giao">Đã giao</option>
@@ -271,8 +271,7 @@
     </div>
 
     <div class="col-md-1 text-center">
-      <!-- Nút chỉ để hiển thị, không thực hiện hành động gì -->
-      <button type="button" class="btn btn-primary w-100">Tra cứu</button>
+      <button type="submit" class="#">Tra cứu</button>
     </div>
   </div>
 </form>
@@ -283,6 +282,11 @@
         <i class="fa fa-plus"></i> Thêm danh mục
       </button>
     </div>
+
+
+
+
+
 
     <!-- Radio điều khiển -->
     <input type="radio" name="page" id="page1" checked>
