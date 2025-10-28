@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Giá Bán</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    h2 {
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 25px;
+    }
+
+    .table th {
+      background-color: #f1f3f9;
+    }
+
+    input[name="page"] {
+      display: none;
+    }
+
+    #page1Content,
+    #page2Content {
+      display: none;
+      animation: fade 0.4s ease;
+    }
+
+    #page1:checked~.book #page1Content {
+      display: block;
+    }
+
+    #page2:checked~.book #page2Content {
+      display: block;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .controls label {
+      display: inline-block;
+      background-color: #e9ecef;
+      border-radius: 20px;
+      padding: 6px 16px;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    #page1:checked~.controls label[for="page1"],
+    #page2:checked~.controls label[for="page2"] {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .btn-add {
+      margin-bottom: 20px;
+    }
+  </style>
+  <style>
+        /* ==================================== */
+        /* CẤU TRÚC MENU THẢ XUỐNG (DROPDOWN) */
+        /* ==================================== */
+
+        /* 1. Thiết lập vị trí tương đối cho mục cha */
+        .header__top__left ul li.has-dropdown {
+            position: relative; 
+        }
+
+        /* KHẮC PHỤC LỖI TÔ ĐEN TRÊN LIÊN KẾT CHA */
+        .header__top__left ul li.has-dropdown > a:focus,
+        .header__top__left ul li.has-dropdown > a:active {
+            /* Dùng !important để ghi đè CSS từ file style.css nếu cần */
+            outline: none !important; 
+            -webkit-tap-highlight-color: transparent; 
+            background-color: transparent !important;
+        }
+
+        /* 2. Thiết lập trạng thái mặc định (ẨN) cho dropdown */
+        .header__top__left ul li .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0; 
+            z-index: 100;
+
+            /* NỀN ĐẬM CHO CHỮ TRẮNG NỔI BẬT */
+            background-color: #333; /* Nền xám/đen đậm */
+            border: 1px solid #555;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            padding: 5px 0;
+            list-style: none; /* Loại bỏ dấu chấm */
+        }
+
+        /* 3. Hiển thị menu khi di chuột vào mục cha */
+        .header__top__left ul li.has-dropdown:hover > .dropdown {
+            display: block;
+        }
+
+        /* 4. Định kiểu cho các mục con trong menu */
+        .header__top__left ul li .dropdown li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            
+            /* MÀU CHỮ TRẮNG */
+            color: white; 
+            
+            font-size: 16px;
+            white-space: nowrap;
+        }
+
+        /* Hiệu ứng di chuột (hover) cho các mục con */
+        .header__top__left ul li .dropdown li a:hover {
+            background-color: #555; /* Nền xám nhẹ khi hover */
+            color: #ffcc00; /* Màu nổi bật khi hover */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header__top__inner">
+                            <div class="header__top__left">
+                                <ul>
+                                    <li class="has-dropdown">
+                                    <a href="./profile.html">
+                                            Xin chào <strong>Admin</strong> 
+                                            <span class="arrow_carrot-down"></span> 
+                                    </a>
+                                        <ul class="dropdown">
+                                            <li><a href="./profile.html">My Profile</a></li> 
+                                            <li><a href="./register.html">Log out</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__logo">
+                                <a href="./#.html"><img src="img/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li><a href="./admin_product.html">Quản Lý Đơn Hàng</a></li>
+                            <li><a href="./admin_member.html">Quản Lý Khách Hàng</a></li>
+                            <li class="active"><a href="#">Quản Lý Kho</a>
+                                <ul class="dropdown">
+                                    <li><a href="./admin_category.html">Quản Lý Danh Mục Sản Phẩm</a></li>
+                                    <li><a href="./checkout.html">Quản Lý Nhập Sản Phẩm</a></li>
+                                    <li><a href="./admin_selling.html">Quản Lý Giá Bán</a></li>
+                                    <li><a href="./admin_quantity.html">Quản Lý Số Lượng Tồn</a></li>
+                                    <li><a href="./admin_type.html">Quản Lý Loại Sản Phẩm</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+  <div class="container py-5">
+    <h2 class="text-center">Quản Lý Sản Phẩm & Giá</h2>
+
+    <div class="card bg-white">
+      <h5><i class="fa-solid fa-tags"></i> Bảng Nhập Giá Sản Phẩm (SP001 - SP010)</h5>
+      <div class="table-responsive">
+        <table class="table table-bordered text-center align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Mã SP</th>
+              <th>Tên sản phẩm</th>
+              <th>Giá gốc (đ)</th>
+              <th>Giá bán</th>
+              <th>Số lượng tồn</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#SP001</td>
+              <td>Dozen Cupcakes</td>
+              <td><input type="number" class="form-control text-center" value="150000"></td>
+              <td><input type="number" class="form-control text-center" value="220000"></td>
+              <td><input type="number" class="form-control text-center" value="50"></td>
+              <td><a href="#" class="btn btn-success btn-sm">Lưu</a></td>
+            </tr>
+            <tr>
+              <td>#SP002</td>
+              <td>Vanilla Salted Caramel</td>
+              <td><input type="number" class="form-control text-center" value="25000"></td>
+              <td><input type="number" class="form-control text-center" value="35000"></td>
+              <td><input type="number" class="form-control text-center" value="120"></td>
+              <td><a href="#" class="btn btn-success btn-sm">Lưu</a></td>
+            </tr>
+            <tr>
+              <td>#SP003</td>
+              <td>Sweet Autumn Leaves</td>
+              <td><input type="number" class="form-control text-center" value="28000"></td>
+              <td><input type="number" class="form-control text-center" value="40000"></td>
+              <td><input type="number" class="form-control text-center" value="85"></td>
+              <td><a href="#" class="btn btn-success btn-sm">Lưu</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TRA CỨU GIÁ VỐN - LỢI NHUẬN -->
+    <div class="result-box">
+      <h5><i class="fa-solid fa-calculator"></i> Tra cứu giá vốn & lợi nhuận</h5>
+      <form id="profitForm" class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label">Giá gốc (đ)</label>
+          <input type="number" class="form-control" id="costPrice" placeholder="Nhập giá vốn">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">% lợi nhuận mong muốn</label>
+          <input type="number" class="form-control" id="profitPercent" placeholder="Nhập % lợi nhuận">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Giá bán (đ)</label>
+          <input type="number" class="form-control" id="salePrice" placeholder="Tự động tính hoặc nhập giá bán">
+        </div>
+        <div class="col-12 text-center mt-3">
+          <button type="button" class="btn btn-primary" onclick="calculateSalePrice()">Tính giá bán</button>
+          <button type="button" class="btn btn-secondary" onclick="calculateProfitPercent()">Tính % lợi nhuận</button>
+        </div>
+      </form>
+      <div id="result" class="mt-4 text-center fs-5 fw-bold text-success"></div>
+    </div>
+  </div>
+
+  <!-- JS -->
+   <!-- JS -->
+   <script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.barfiller.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/main.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script>
+    // TÍNH GIÁ BÁN DỰA TRÊN GIÁ VỐN VÀ % LỢI NHUẬN
+    function calculateSalePrice() {
+      const cost = parseFloat(document.getElementById('costPrice').value);
+      const percent = parseFloat(document.getElementById('profitPercent').value);
+
+      if (isNaN(cost) || isNaN(percent)) {
+        document.getElementById('result').innerHTML = "Vui lòng nhập đầy đủ thông tin!";
+        return;
+      }
+
+      const sale = cost * (1 + percent / 100);
+      document.getElementById('salePrice').value = sale.toFixed(0);
+      document.getElementById('result').innerHTML = `💰 Giá bán đề xuất: <strong>${sale.toLocaleString()} đ</strong>`;
+    }
+
+    // TÍNH % LỢI NHUẬN DỰA TRÊN GIÁ VỐN VÀ GIÁ BÁN
+    function calculateProfitPercent() {
+      const cost = parseFloat(document.getElementById('costPrice').value);
+      const sale = parseFloat(document.getElementById('salePrice').value);
+
+      if (isNaN(cost) || isNaN(sale) || cost <= 0) {
+        document.getElementById('result').innerHTML = "Vui lòng nhập hợp lệ!";
+        return;
+      }
+
+      const percent = ((sale - cost) / cost) * 100;
+      document.getElementById('profitPercent').value = percent.toFixed(2);
+      document.getElementById('result').innerHTML = `📈 Lợi nhuận: <strong>${percent.toFixed(2)}%</strong>`;
+    }
+  </script>
+</body>
+</html>
