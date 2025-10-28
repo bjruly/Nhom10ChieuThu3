@@ -51,38 +51,118 @@
                 </div>
 
                 <!-- Phần 1: Thông tin Khách hàng -->
-                <!-- Đã thay đổi bg-gray-50/50 thành bg-white/50 để đồng nhất với nền trong suốt -->
-                <section class="mb-10 p-6 rounded-xl bg-white/50 shadow-inner">
-                    <h2 class="text-xl font-semibold text-gray-700 mb-5 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        Chi tiết Tài khoản
-                    </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 text-base">
-                        
-                        <!-- Email --><div class="flex flex-col">
-                            <span class="font-medium text-gray-500">Email</span>
-                            <span class="font-semibold text-gray-800" id="profile-email">taidaoxo@gmail.com</span>
-                        </div>
-                        
-                        <!-- Số điện thoại --><div class="flex flex-col">
-                            <span class="font-medium text-gray-500">Số điện thoại</span>
-                            <span class="font-semibold text-gray-800" id="profile-phone">+84 333-588-320</span>
-                        </div>
-                        
-                        <!-- Ngày tham gia --><div class="flex flex-col">
-                            <span class="font-medium text-gray-500">Ngày tham gia</span>
-                            <span class="font-semibold text-gray-800" id="profile-join-date">23/9/2006</span>
-                        </div>
+<section class="mb-10 p-6 rounded-xl bg-white/50 shadow-inner">
+    <h2 class="text-xl font-semibold text-gray-700 mb-5 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Chi tiết Tài khoản
+    </h2>
 
-                        <!-- Loại tài khoản --><div class="flex flex-col">
-                            <span class="font-medium text-gray-500">Cấp độ</span>
-                            <span class="font-semibold text-gray-800">Thành viên Chiến Tướng</span>
-                        </div>
-                        
-                    </div>
-                </section>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 text-base">
+        
+        <!-- Email -->
+        <div class="flex flex-col">
+            <span class="font-medium text-gray-500">Email</span>
+            <span class="font-semibold text-gray-800" id="profile-email">taidaoxo@gmail.com</span>
+        </div>
+        
+        <!-- Số điện thoại -->
+        <div class="flex flex-col">
+            <span class="font-medium text-gray-500">Số điện thoại</span>
+            <span class="font-semibold text-gray-800" id="profile-phone">+84 333-588-320</span>
+        </div>
+        
+        <!-- Ngày tham gia -->
+        <div class="flex flex-col">
+            <span class="font-medium text-gray-500">Ngày tham gia</span>
+            <span class="font-semibold text-gray-800" id="profile-join-date">23/9/2006</span>
+        </div>
+
+        <!-- Cấp độ -->
+        <div class="flex flex-col">
+            <span class="font-medium text-gray-500">Cấp độ</span>
+            <span class="font-semibold text-gray-800">Thành viên Chiến Tướng</span>
+        </div>
+
+        <!-- Địa chỉ -->
+        <div class="flex flex-col sm:col-span-2">
+            <span class="font-medium text-gray-500">Địa chỉ</span>
+            <span class="font-semibold text-gray-800" id="profile-address">
+                Đường số 19, Phú Mỹ, Quận 7, TP. Hồ Chí Minh(Chateau Villa)
+            </span>
+        </div>
+    </div>
+</section>
+
+<!-- Phần 1.5: Sửa Thông tin Cá nhân (không dùng JS) -->
+<section class="mb-10 p-6 rounded-xl bg-white/50 shadow-inner mt-10">
+    <h2 class="text-xl font-semibold text-gray-700 mb-5 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5h2m-1 0v14m0 0H9m2 0h2m0 0h2M4 12h16" />
+        </svg>
+        Sửa thông tin cá nhân
+    </h2>
+
+    <!-- Khối có thể mở/đóng -->
+    <details class="bg-white/70 rounded-xl border border-gray-200 overflow-hidden group">
+        <summary class="cursor-pointer px-6 py-3 bg-indigo-600 text-white font-semibold rounded-t-xl hover:bg-indigo-700 transition duration-150 ease-in-out">
+            Nhấn để Sửa thông tin
+        </summary>
+
+        <div class="p-6 space-y-5">
+            <!-- Họ tên -->
+            <div>
+                <label for="edit-name" class="block text-sm font-medium text-gray-700">Họ và Tên</label>
+                <input type="text" id="edit-name" placeholder="Nhập họ tên mới"
+                    class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out">
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="edit-email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="edit-email" placeholder="Nhập email mới"
+                    class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out">
+            </div>
+
+            <!-- Số điện thoại -->
+            <div>
+                <label for="edit-phone" class="block text-sm font-medium text-gray-700">Số điện thoại</label>
+                <input type="tel" id="edit-phone" placeholder="Nhập số điện thoại mới"
+                    class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out">
+            </div>
+
+            <!-- Ngày sinh -->
+            <div>
+                <label for="edit-birthday" class="block text-sm font-medium text-gray-700">Ngày sinh</label>
+                <input type="date" id="edit-birthday"
+                    class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out">
+            </div>
+
+            <!-- Địa chỉ -->
+            <div>
+                <label for="edit-address" class="block text-sm font-medium text-gray-700">Địa chỉ</label>
+                <textarea id="edit-address" rows="3" placeholder="Nhập địa chỉ của bạn"
+                    class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out resize-none"></textarea>
+            </div>
+
+            <!-- Nút Lưu -->
+            <div class="pt-4 flex flex-wrap gap-3">
+                <button type="button"
+                    class="w-full sm:w-auto px-6 py-3 bg-emerald-600 text-white font-semibold rounded-lg shadow-md hover:bg-emerald-700 focus:ring-2 focus:ring-emerald-500 transition duration-150 ease-in-out transform hover:scale-[1.01]">
+                    Lưu thay đổi
+                </button>
+
+                <button type="reset"
+                    class="w-full sm:w-auto px-6 py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 focus:ring-2 focus:ring-gray-400 transition duration-150 ease-in-out">
+                    Hủy
+                </button>
+            </div>
+        </div>
+    </details>
+</section>
+
+
 
                 <!-- Phần 2: Đổi Mật khẩu --><section class="mt-10 pt-8 border-t border-gray-200">
                     <h2 class="text-xl font-semibold text-gray-700 mb-5 flex items-center">
