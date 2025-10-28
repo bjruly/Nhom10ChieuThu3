@@ -4026,3 +4026,55 @@ ol {
   }
   
 }
+.site-btn:hover {
+    opacity: 0.9;
+}
+.site-btn.back-btn:hover {
+    background-color: #ffcc00 !important;
+    color: #fff !important;
+}
+/* ============================= */
+/*  NÚT ĐẶT HÀNG & QUAY VỀ GIỎ  */
+/* ============================= */
+.checkout__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Nút cơ bản */
+.checkout__buttons .site-btn {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+/* Nút quay về */
+.checkout__buttons .back-btn {
+    background-color: #666;
+    color: #fff;
+}
+
+/* Nút đặt hàng */
+.checkout__buttons .order-btn {
+    background-color: #d82a4e;
+    color: #fff;
+}
+
+/* Hiệu ứng hover */
+.checkout__buttons .site-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
+}
+
+/* Hiệu ứng riêng cho nút quay về */
+.checkout__buttons .back-btn:hover {
+    background-color: #ffcc00;
+    color: #333;
+}
