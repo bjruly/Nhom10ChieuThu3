@@ -11,7 +11,66 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="css/style.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+        /* ==================================== */
+        /* CẤU TRÚC MENU THẢ XUỐNG (DROPDOWN) */
+        /* ==================================== */
 
+        /* 1. Thiết lập vị trí tương đối cho mục cha */
+        .header__top__left ul li.has-dropdown {
+            position: relative; 
+        }
+
+        /* KHẮC PHỤC LỖI TÔ ĐEN TRÊN LIÊN KẾT CHA */
+        .header__top__left ul li.has-dropdown > a:focus,
+        .header__top__left ul li.has-dropdown > a:active {
+            /* Dùng !important để ghi đè CSS từ file style.css nếu cần */
+            outline: none !important; 
+            -webkit-tap-highlight-color: transparent; 
+            background-color: transparent !important;
+        }
+
+        /* 2. Thiết lập trạng thái mặc định (ẨN) cho dropdown */
+        .header__top__left ul li .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0; 
+            z-index: 100;
+
+            /* NỀN ĐẬM CHO CHỮ TRẮNG NỔI BẬT */
+            background-color: #333; /* Nền xám/đen đậm */
+            border: 1px solid #555;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            padding: 5px 0;
+            list-style: none; /* Loại bỏ dấu chấm */
+        }
+
+        /* 3. Hiển thị menu khi di chuột vào mục cha */
+        .header__top__left ul li.has-dropdown:hover > .dropdown {
+            display: block;
+        }
+
+        /* 4. Định kiểu cho các mục con trong menu */
+        .header__top__left ul li .dropdown li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            
+            /* MÀU CHỮ TRẮNG */
+            color: white; 
+            
+            font-size: 16px;
+            white-space: nowrap;
+        }
+
+        /* Hiệu ứng di chuột (hover) cho các mục con */
+        .header__top__left ul li .dropdown li a:hover {
+            background-color: #555; /* Nền xám nhẹ khi hover */
+            color: #ffcc00; /* Màu nổi bật khi hover */
+        }
+    </style>
   <style>
     body {
       background: url('img/hero/hero-1.jpg') no-repeat center center fixed;
