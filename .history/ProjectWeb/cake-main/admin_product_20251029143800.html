@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý đơn hàng </title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+  <link rel="stylesheet" href="css/barfiller.css" type="text/css">
+  <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  <style>
+    body {
+      background: url('img/hero/hero-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Montserrat', sans-serif;
+      color: #222;
+    }
+
+    h2 {
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 25px;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .table th {
+      background-color: #f1f3f9;
+    }
+
+    input[name="page"] {
+      display: none;
+    }
+
+    #page1Content,
+    #page2Content {
+      display: none;
+      animation: fade 0.4s ease;
+    }
+
+    #page1:checked~.book #page1Content {
+      display: block;
+    }
+
+    #page2:checked~.book #page2Content {
+      display: block;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .controls label {
+      display: inline-block;
+      background-color: #e9ecef;
+      border-radius: 20px;
+      padding: 6px 16px;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    #page1:checked~.controls label[for="page1"],
+    #page2:checked~.controls label[for="page2"] {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    @keyframes fade {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .btn-add {
+      margin-bottom: 20px;
+    }
+  </style>
+
+  <style>
+    .header__top__left ul li.has-dropdown {
+      position: relative;
+    }
+
+    .header__top__left ul li.has-dropdown > a:focus,
+    .header__top__left ul li.has-dropdown > a:active {
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent;
+      background-color: transparent !important;
+    }
+
+    .header__top__left ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 100;
+      background-color: #333;
+      border: 1px solid #555;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      min-width: 200px;
+      padding: 5px 0;
+      list-style: none;
+    }
+
+    .header__top__left ul li.has-dropdown:hover > .dropdown {
+      display: block;
+    }
+
+    .header__top__left ul li .dropdown li a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      white-space: nowrap;
+    }
+
+    .header__top__left ul li .dropdown li a:hover {
+      background-color: #555;
+      color: #ffcc00;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- (phần đầu giữ nguyên) -->
+
+  <div class="container py-5">
+    <h2 class="text-center"> Quản Lý Đơn Hàng</h2>
+
+    <!-- FORM TRA CỨU -->
+    <form class="card p-3 mb-4" style="max-width: 100%;">
+      <div class="row g-3 align-items-end">
+        <div class="col-md-4">
+          <label for="fromDate" class="form-label">Từ ngày:</label>
+          <input type="date" id="fromDate" name="fromDate" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label for="toDate" class="form-label">Đến ngày:</label>
+          <input type="date" id="toDate" name="toDate" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <label for="status" class="form-label"></label>
+          <select id="status" name="status" class="form-select">
+            <option value="">-- Trạng Thái  --</option>
+            <option value="Mới đặt">Mới đặt</option>
+            <option value="Đã xử lý">Đã xử lý</option>
+            <option value="Đã giao">Đã giao</option>
+            <option value="Hủy">Hủy</option>
+          </select>
+        </div>
+        <div class="col-md-1 text-center">
+          <button type="button" class="btn btn-primary w-100">Tra cứu</button>
+        </div>
+      </div>
+    </form>
+
+    <input type="radio" name="page" id="page1" checked>
+    <input type="radio" name="page" id="page2">
+
+    <div class="book">
+      <div id="page1Content" class="card bg-white">
+        <h5>Danh sách đơn hàng (P001 - P010)</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Mã ĐH</th>
+                <th>Tên sản phẩm</th>
+                <th>Khách hàng</th>
+                <th>Ngày đặt</th>
+                <th>Trạng thái</th>
+                <th>Chi tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>#P001</td><td>Dozen Cupcakes</td><td>Trần Nhựt Huy</td><td>12/12/2025</td><td><span class="badge bg-warning text-dark">Mới đặt</span></td>
+                <td><a href="chitiet.html" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P002</td><td>Vanilla Salted Caramel</td><td>Nguyễn Hoàng Phúc</td><td>13/07/2026</td><td><span class="badge bg-warning text-dark">Mới đặt</span></td>
+                <td><a href="chitiet.html" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <tr><td>#P003</td><td>Sweet Autumn Leaves</td><td>Nguyễn Trung Hiếu</td><td>13/02/2024</td><td><span class="badge bg-success">Đã giao</span></td>
+                <td><a href="chitiet.html" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <!-- Giữ nguyên các dòng khác -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="page2Content" class="card bg-white">
+        <h5>Danh sách đơn hàng (P011 - P020)</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Mã ĐH</th>
+                <th>Tên sản phẩm</th>
+                <th>Khách hàng</th>
+                <th>Ngày đặt</th>
+                <th>Trạng thái</th>
+                <th>Chi tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>#P011</td><td>Vanilla Salted Caramel</td><td>Trần Nhựt Huy</td><td>12/12/2025</td><td><span class="badge bg-warning text-dark">Mới đặt</span></td>
+                <td><a href="chitiet.html" class="btn btn-primary btn-sm">Xem</a></td></tr>
+              <!-- Giữ nguyên các dòng khác -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label for="page1">Trang 1</label>
+      <label for="page2">Trang 2</label>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý đơn hàng </title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+  <link rel="stylesheet" href="css/barfiller.css" type="text/css">
+  <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  <style>
+    body {
+      background: url('img/hero/hero-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Montserrat', sans-serif;
+      color: #222;
+    }
+
+    h2 {
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 25px;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .table th {
+      background-color: #f1f3f9;
+    }
+
+    input[name="page"] {
+      display: none;
+    }
+
+    #page1Content,
+    #page2Content {
+      display: none;
+      animation: fade 0.4s ease;
+    }
+
+    #page1:checked~.book #page1Content {
+      display: block;
+    }
+
+    #page2:checked~.book #page2Content {
+      display: block;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .controls label {
+      display: inline-block;
+      background-color: #e9ecef;
+      border-radius: 20px;
+      padding: 6px 16px;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    #page1:checked~.controls label[for="page1"],
+    #page2:checked~.controls label[for="page2"] {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .btn-add {
+      margin-bottom: 20px;
+    }
+
+    /* Popup */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .popup-card {
+      background: #fff;
+      padding: 25px 25px 35px 25px;
+      border-radius: 12px;
+      max-width: 450px;
+      width: 90%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      font-family: 'Montserrat', sans-serif;
+      animation: popupFade 0.3s ease;
+      position: relative;
+      text-align: center;
+    }
+
+    .popup-card h4 {
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .popup-card p {
+      margin-bottom: 8px;
+      font-size: 15px;
+      color: #444;
+      text-align: left;
+    }
+
+    .popup-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 26px;
+      text-decoration: none;
+      color: #444;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #ff3333;
+    }
+
+    #popup:target {
+      display: flex;
+    }
+
+    @keyframes popupFade {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <style>
+    .header__top__left ul li.has-dropdown {
+      position: relative;
+    }
+
+    .header__top__left ul li.has-dropdown>a:focus,
+    .header__top__left ul li.has-dropdown>a:active {
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent;
+      background-color: transparent !important;
+    }
+
+    .header__top__left ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 100;
+      background-color: #333;
+      border: 1px solid #555;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      min-width: 200px;
+      padding: 5px 0;
+      list-style: none;
+    }
+
+    .header__top__left ul li.has-dropdown:hover>.dropdown {
+      display: block;
+    }
+
+    .header__top__left ul li .dropdown li a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      white-space: nowrap;
+    }
+
+    .header__top__left ul li .dropdown li a:hover {
+      background-color: #555;
+      color: #ffcc00;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="header__top__inner">
+              <div class="header__top__left">
+                <ul>
+                  <li class="has-dropdown">
+                    Xin chào <strong>Admin</strong>
+                    <span class="arrow_carrot-down"></span>
+                    <ul class="dropdown">
+                      <li><a href="./admin_login.html">Log out</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="header__logo">
+                <a href="#"><img src="img/logo.png" alt=""></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="header__menu mobile-menu">
+        <ul>
+          <li class="active"><a href="./admin_product.html">Quản Lý Đơn Hàng</a></li>
+          <li><a href="./admin_member.html">Quản Lý Khách Hàng</a></li>
+          <li><a href="#">Quản Lý Kho</a>
+            <ul class="dropdown">
+              <li><a href="./admin_category.html">Quản Lý Danh Mục Sản Phẩm</a></li>
+              <li><a href="./admin_selling.html">Quản Lý Giá Bán</a></li>
+              <li><a href="./admin_quantity.html">Quản Lý Số Lượng Tồn</a></li>
+              <li><a href="./admin_type.html">Quản Lý Loại Sản Phẩm</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container py-5">
+    <h2 class="text-center"> Quản Lý Đơn Hàng</h2>
+
+    <form class="card p-3 mb-4">
+      <div class="row g-3 align-items-end">
+        <div class="col-md-4">
+          <label for="fromDate" class="form-label">Từ ngày:</label>
+          <input type="date" id="fromDate" name="fromDate" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label for="toDate" class="form-label">Đến ngày:</label>
+          <input type="date" id="toDate" name="toDate" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <label for="status" class="form-label"></label>
+          <select id="status" name="status" class="form-select">
+            <option value="">-- Trạng Thái --</option>
+            <option value="Mới đặt">Mới đặt</option>
+            <option value="Đã xử lý">Đã xử lý</option>
+            <option value="Đã giao">Đã giao</option>
+            <option value="Hủy">Hủy</option>
+          </select>
+        </div>
+        <div class="col-md-1 text-center">
+          <button type="button" class="btn btn-primary w-100">Tra cứu</button>
+        </div>
+      </div>
+    </form>
+
+    <input type="radio" name="page" id="page1" checked>
+    <input type="radio" name="page" id="page2">
+
+    <div class="book">
+      <div id="page1Content" class="card bg-white">
+        <h5>Danh sách đơn hàng (P001 - P010)</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Mã ĐH</th>
+                <th>Tên sản phẩm</th>
+                <th>Khách hàng</th>
+                <th>Ngày đặt</th>
+                <th>Trạng thái</th>
+                <th>Chi tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#P001</td>
+                <td>Dozen Cupcakes</td>
+                <td>Trần Nhựt Huy</td>
+                <td>12/12/2025</td>
+                <td><span class="badge bg-warning text-dark">Mới đặt</span></td>
+                <td><a href="#popup" class="btn btn-primary btn-sm">Xem</a></td>
+              </tr>
+              <tr>
+                <td>#P002</td>
+                <td>Vanilla Salted Caramel</td>
+                <td>Nguyễn Hoàng Phúc</td>
+                <td>13/07/2026</td>
+                <td><span class="badge bg-warning text-dark">Mới đặt</span></td>
+                <td><a href="#popup" class="btn btn-primary btn-sm">Xem</a></td>
+              </tr>
+              <tr>
+                <td>#P003</td>
+                <td>Sweet Autumn Leaves</td>
+                <td>Nguyễn Trung Hiếu</td>
+                <td>13/02/2024</td>
+                <td><span class="badge bg-success">Đã giao</span></td>
+                <td><a href="#popup" class="btn btn-primary btn-sm">Xem</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup duy nhất -->
+  <div id="popup" class="popup-overlay">
+    <div class="popup-card">
+      <a href="#" class="close-btn">&times;</a>
+      <h4>Chi tiết đơn hàng</h4>
+      <img src="img/products/cake1.jpg" alt="Ảnh bánh" class="popup-img">
+      <p><strong>Tên khách hàng:</strong> Nguyễn Văn A</p>
+      <p><strong>Tên bánh:</strong> Bánh kem dâu tươi</p>
+      <p><strong>Số lượng:</strong> 2</p>
+      <p><strong>Địa chỉ:</strong> 45 Nguyễn Huệ, TP. HCM</p>
+      <p><strong>Ngày đặt:</strong> 12/12/2025</p>
+      <p><strong>Hình thức thanh toán:</strong> Tiền mặt</p>
+    </div>
+  </div>
+
+  <!-- Js Plugins -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.nice-select.min.js"></script>
+  <script src="js/jquery.barfiller.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.nicescroll.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

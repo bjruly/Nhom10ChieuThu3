@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết đơn hàng</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <style>
+    body {
+      background: url('img/hero/hero-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.93);
+      border-radius: 18px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      margin: 60px auto;
+      max-width: 700px;
+      padding: 35px;
+      backdrop-filter: blur(4px);
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 30px;
+      color: #2c3e50;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+    }
+
+    .info {
+      font-size: 17px;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .info strong {
+      width: 200px;
+      display: inline-block;
+      color: #222;
+      font-weight: 600;
+    }
+
+    .info span {
+      color: #555;
+      font-weight: 500;
+    }
+
+    .cake-img {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .cake-img img {
+      border-radius: 15px;
+      width: 100%;
+      max-width: 320px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease;
+    }
+
+    .cake-img img:hover {
+      transform: scale(1.03);
+    }
+
+    .btn-back {
+      display: block;
+      margin: 30px auto 0;
+      width: fit-content;
+      background-color: #34495e;
+      color: #fff;
+      font-weight: 500;
+      border-radius: 8px;
+      padding: 8px 20px;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-back:hover {
+      background-color: #2c3e50;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h2>Chi tiết đơn hàng</h2>
+
+    <div class="info"><strong>Mã đơn hàng:</strong> <span>P001</span></div>
+    <div class="info"><strong>Ngày đặt hàng:</strong> <span>12/12/2025</span></div>
+    <div class="info"><strong>Tên sản phẩm:</strong> <span>Dozen Cupcakes</span></div>
+    <div class="info"><strong>Số lượng:</strong> <span>2 cái</span></div>
+    <div class="info"><strong>Hình thức thanh toán:</strong> <span>Tiền mặt</span></div>
+    <div class="info"><strong>Email liên hệ:</strong> <span>nhanto2n@gmail.com</span></div>
+
+    <div class="cake-img">
+      <img src="img/shop/product-1.jpg" alt="Dozen Cupcakes">
+    </div>
+
+    <a href="admin_product.html" class="btn btn-secondary btn-back">⬅ Quay lại danh sách đơn hàng</a>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
+
