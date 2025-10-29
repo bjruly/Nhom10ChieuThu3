@@ -9,3 +9,11 @@ function checkLogin(event) {
     }
   }
 }
+function deleteProduct()
+  {
+    if (confirm("Bạn có chắc muốn xóa này không?")) 
+      {
+        alert("✅ Đã xóa thành công!");
+        // Nếu bạn muốn xóa thật, có thể thêm dòng xử lý ở đây (ví dụ: gửi request hoặc xóa phần tử)
+      }
+  }
