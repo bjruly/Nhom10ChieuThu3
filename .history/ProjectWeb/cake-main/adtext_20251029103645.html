@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản lý Danh mục - Admin Panel | OTOTHESIU</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --gold-color: #FFD700;
+      --dark-gold: #B8860B;
+      --jade-black: #0D1B2A;
+      --jade-dark: #041E42;
+      --accent-gold: #F4E27C;
+      --text-light: #E8E8E8;
+      --card-bg: #1A2A3A;
+      --border-radius: 10px;
+      --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--jade-black);
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      background: linear-gradient(135deg, var(--gold-color), var(--dark-gold)) !important;
+      box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+      padding: 10px 0;
+    }
+
+    .navbar-brand .brand-text {
+      font-weight: bold;
+      font-size: 1.5rem;
+      background: linear-gradient(45deg, var(--jade-black), var(--jade-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--jade-black) !important;
+      font-weight: 600;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      margin: 0 5px;
+      border-radius: 6px;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background: rgba(255, 215, 0, 0.1);
+      color: var(--jade-dark) !important;
+      transform: translateY(-2px);
+    }
+
+    .navbar-nav .nav-link.active {
+      background: var(--jade-dark);
+      color: var(--gold-color) !important;
+      font-weight: 600;
+    }
+
+    /* Main Content */
+    .main-content {
+      padding: 30px 20px;
+      min-height: 100vh;
+    }
+
+    /* Page Header */
+    .page-header {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      margin-bottom: 25px;
+      border: 1px solid var(--gold-color);
+      box-shadow: var(--box-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .page-header h2 {
+      color: var(--gold-color);
+      margin: 0;
+      font-weight: 600;
+    }
+
+    /* Search and Filter */
+    .search-filter-container {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      position: relative;
+      min-width: 250px;
+    }
+
+    .search-box input {
+      background: var(--jade-dark);
+      border: 1px solid var(--gold-color);
+      border-radius: 50px;
+      color: var(--text-light);
+      padding: 10px 20px 10px 45px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .search-box input:focus {
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+      outline: none;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold-color);
+    }
+
+    /* Status Filter */
+    .status-filter {
+      min-width: 200px;
+    }
+
+    .status-filter select {
+      background: var(--jade-dark);
+      border: 1px solid var(--gold-color);
+      border-radius: 50px;
+      color: var(--text-light);
+      padding: 10px 20px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .status-filter select:focus {
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+      outline: none;
+    }
+
+    /* Action Buttons */
+    .action-btn {
+      background: linear-gradient(135deg, var(--gold-color), var(--dark-gold));
+      border: none;
+      color: var(--jade-black);
+      padding: 12px 20px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+    }
+
+    .action-btn:hover {
+      background: linear-gradient(135deg, var(--dark-gold), var(--gold-color));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    }
+
+    .action-btn.secondary {
+      background: var(--jade-dark);
+      color: var(--gold-color);
+      border: 1px solid var(--gold-color);
+    }
+
+    .action-btn.secondary:hover {
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    /* Categories Grid */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .category-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      border: 1px solid var(--gold-color);
+      box-shadow: var(--box-shadow);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+    }
+
+    .category-card.inactive {
+      opacity: 0.6;
+      border-color: #6c757d;
+    }
+
+    .category-image {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      border-bottom: 1px solid var(--gold-color);
+    }
+
+    .category-content {
+      padding: 20px;
+    }
+
+    .category-name {
+      color: var(--gold-color);
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .category-status {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .status-active {
+      background: #28a745;
+      color: white;
+    }
+
+    .status-inactive {
+      background: #6c757d;
+      color: white;
+    }
+
+    .category-description {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .category-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-size: 0.85rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      color: var(--accent-gold);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .stat-label {
+      color: var(--text-light);
+      font-size: 0.75rem;
+    }
+
+    .category-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .category-btn {
+      flex: 1;
+      text-align: center;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .category-btn.edit {
+      background: rgba(23, 162, 184, 0.2);
+      color: #17a2b8;
+      border: 1px solid #17a2b8;
+    }
+
+    .category-btn.edit:hover {
+      background: rgba(23, 162, 184, 0.4);
+    }
+
+    .category-btn.toggle {
+      background: rgba(255, 193, 7, 0.2);
+      color: #ffc107;
+      border: 1px solid #ffc107;
+    }
+
+    .category-btn.toggle:hover {
+      background: rgba(255, 193, 7, 0.4);
+    }
+
+    .category-btn.delete {
+      background: rgba(220, 53, 69, 0.2);
+      color: #dc3545;
+      border: 1px solid #dc3545;
+    }
+
+    .category-btn.delete:hover {
+      background: rgba(220, 53, 69, 0.4);
+    }
+
+    /* Pagination */
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .pagination {
+      display: flex;
+      gap: 5px;
+    }
+
+    .page-item {
+      margin: 0 2px;
+    }
+
+    .page-link {
+      background: var(--card-bg);
+      border: 1px solid var(--gold-color);
+      color: var(--text-light);
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .page-link:hover {
+      background: rgba(255, 215, 0, 0.1);
+      color: var(--gold-color);
+    }
+
+    .page-item.active .page-link {
+      background: linear-gradient(135deg, var(--gold-color), var(--dark-gold));
+      color: var(--jade-black);
+      border-color: var(--gold-color);
+    }
+
+    .page-item.disabled .page-link {
+      background: var(--jade-dark);
+      color: var(--accent-gold);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    /* Results Info */
+    .results-info {
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* Modal Styles */
+    .modal-content {
+      background: var(--card-bg);
+      border: 1px solid var(--gold-color);
+      border-radius: var(--border-radius);
+    }
+
+    .modal-header {
+      border-bottom: 1px solid var(--gold-color);
+      padding: 20px;
+    }
+
+    .modal-title {
+      color: var(--gold-color);
+      font-weight: 600;
+    }
+
+    .modal-body {
+      padding: 20px;
+    }
+
+    .modal-footer {
+      border-top: 1px solid var(--gold-color);
+      padding: 20px;
+    }
+
+    .btn-close {
+      filter: invert(1);
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      color: var(--text-light);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      background: var(--jade-dark);
+      border: 1px solid var(--gold-color);
+      border-radius: 5px;
+      color: var(--text-light);
+      padding: 10px 15px;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+      outline: none;
+      background: var(--jade-dark);
+      color: var(--text-light);
+      border-color: var(--gold-color);
+    }
+
+    .form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-check-input:checked {
+      background-color: var(--gold-color);
+      border-color: var(--gold-color);
+    }
+
+    /* Loading animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      
+      .search-filter-container {
+        width: 100%;
+      }
+      
+      .search-box {
+        min-width: 100%;
+      }
+      
+      .status-filter {
+        min-width: 100%;
+      }
+      
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--jade-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold-color);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--dark-gold);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg shadow-lg">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="https://preview.redd.it/petition-to-make-this-the-new-pic-of-the-sub-v0-x8o3qf29ah5f1.png?width=640&crop=smart&auto=webp&s=d04da2f01be93af3cba092e71c636a1c3bf61749" 
+             alt="Logo" 
+             style="height:40px; margin-right:10px; border-radius:50%; background-color:#000; padding:2px;">
+        <span class="brand-text">OTOTHESIU - Admin</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products.html"><i class="fas fa-box me-1"></i>Sản phẩm</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="categories.html"><i class="fas fa-tags me-1"></i>Danh mục</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="stock.html"><i class="fas fa-warehouse me-1"></i>Tồn kho</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="prices.html"><i class="fas fa-tag me-1"></i>Giá cả</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="orders.html"><i class="fas fa-shopping-cart me-1"></i>Đơn hàng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="import-products.html"><i class="fas fa-file-import me-1"></i>Nhập hàng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="customers.html"><i class="fas fa-users me-1"></i>Khách hàng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html"><i class="fas fa-sign-out-alt me-1"></i>Đăng xuất</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Page Header -->
+    <div class="page-header fade-in-up">
+      <h2><i class="fas fa-tags me-2"></i>Quản lý Danh mục</h2>
+      <div class="search-filter-container">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Tìm kiếm danh mục...">
+        </div>
+        <div class="status-filter">
+          <select id="statusFilter" onchange="filterByStatus(this.value)">
+            <option value="">Tất cả trạng thái</option>
+            <option value="active">Đang hoạt động</option>
+            <option value="inactive">Đã ẩn</option>
+          </select>
+        </div>
+        <button class="action-btn" data-bs-toggle="modal" data-bs-target="#categoryModal" onclick="openAddModal()">
+          <i class="fas fa-plus me-1"></i>Thêm Danh mục
+        </button>
+      </div>
+    </div>
+
+    <!-- Results Info -->
+    <div class="results-info" id="resultsInfo"></div>
+
+    <!-- Categories Grid -->
+    <div class="categories-grid" id="categoriesContainer">
+      <!-- Categories will be loaded here -->
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+      <nav>
+        <ul class="pagination" id="pagination">
+          <!-- Pagination will be generated here -->
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Category Modal -->
+  <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="categoryModalLabel">Thêm Danh mục Mới</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="categoryForm">
+            <input type="hidden" id="categoryId">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="categoryName" class="form-label">Tên danh mục</label>
+                  <input type="text" class="form-control" id="categoryName" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="categoryImage" class="form-label">URL Hình ảnh</label>
+                  <input type="text" class="form-control" id="categoryImage" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="categoryDescription" class="form-label">Mô tả</label>
+              <textarea class="form-control form-textarea" id="categoryDescription" required></textarea>
+            </div>
+            <div class="form-group">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="categoryStatus" checked>
+                <label class="form-check-label" for="categoryStatus">Hiển thị danh mục</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="action-btn secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" class="action-btn" onclick="saveCategory()">Lưu Danh mục</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Dữ liệu danh mục mẫu
+    let categories = [
+      {
+        id: 1,
+        name: "BMW",
+        description: "Hãng xe sang Đức với thiết kế thể thao và công nghệ tiên tiến",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9zgtpQgNOShhs0nSWkwH-WTH66UpuNB7SuQ&s",
+        status: "active",
+        productCount: 6,
+        createdAt: "2024-01-15"
+      },
+      {
+        id: 2,
+        name: "Bugatti",
+        description: "Siêu xe Pháp với hiệu suất và tốc độ đỉnh cao",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNhuqJrDtcHCj6vFTkpu1CbEgSpU2TcMNQVw&s",
+        status: "active",
+        productCount: 6,
+        createdAt: "2024-01-16"
+      },
+      {
+        id: 3,
+        name: "Ferrari",
+        description: "Huyền thoại xe thể thao Ý với thiết kế biểu tượng",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReuB3VKkUX7NKc_4I4PQgXorsgXetcMfl3Ug&s",
+        status: "active",
+        productCount: 6,
+        createdAt: "2024-01-17"
+      },
+      {
+        id: 4,
+        name: "Koenigsegg",
+        description: "Siêu xe Thụy Điển với công nghệ đột phá",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdmFUA8mG_36I82zYmqimd_vpFzQ9loBR_Sg&s",
+        status: "active",
+        productCount: 6,
+        createdAt: "2024-01-18"
+      },
+      {
+        id: 5,
+        name: "Lamborghini",
+        description: "Siêu xe Ý với thiết kế góc cạnh và hiệu suất ấn tượng",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlnW8qSjAOvIw4E6UuCjD9nELviK_ygV1jiQ&s",
+        status: "active",
+        productCount: 6,
+        createdAt: "2024-01-19"
+      },
+      {
+        id: 6,
+        name: "McLaren",
+        description: "Hãng xe Anh với di sản đua xe và công nghệ F1",
+        image: "https://static.vecteezy.com/system/resources/previews/020/500/684/non_2x/mclaren-brand-symbol-logo-orange-design-british-car-automobile-illustration-with-black-background-free-vector.jpg",
+        status: "active",
+        productCount: 6,
+        createdAt: "2024-01-20"
+      },
+      {
+        id: 7,
+        name: "Mercedes",
+        description: "Hãng xe Đức sang trọng với công nghệ tiên tiến",
+        image: "https://1000logos.net/wp-content/uploads/2018/04/Mercedes-Benz-Logo.png",
+        status: "active",
+        productCount: 6,
+        createdAt: "2024-01-21"
+      },
+      {
+        id: 8,
+        name: "Pagani",
+        description: "Siêu xe Ý thủ công với thiết kế nghệ thuật",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTepuDZk5xMtLHR_bY-bks071NWet2SZRoYTw&s",
+        status: "active",
+        productCount: 6,
+        createdAt: "2024-01-22"
+      },
+      {
+        id: 9,
+        name: "Porsche",
+        description: "Hãng xe Đức với di sản thể thao và thiết kế cổ điển",
+        image: "https://inkythuatso.com/uploads/images/2021/11/porsche-logo-inkythuatso-2-01-12-14-55-43.jpg",
+        status: "active",
+        productCount: 6,
+        createdAt: "2024-01-23"
+      }
+    ];
+
+    let nextId = categories.length + 1;
+    let currentPage = 1;
+    const pageSize = 9;
+    let totalPages = 1;
+
+    // Tải trang
+    document.addEventListener('DOMContentLoaded', function() {
+      // Giả lập kiểm tra đăng nhập admin
+      const adminUser = JSON.parse(localStorage.getItem('loggedInAdmin'));
+      if (!adminUser || adminUser.role !== 'admin') {
+        alert('Bạn cần đăng nhập admin để truy cập!');
+        window.location.href = 'admin-login.html';
+        return;
+      }
+
+      // Tải danh sách danh mục
+      loadCategories();
+      
+      // Thiết lập sự kiện tìm kiếm
+      setupSearch();
+    });
+
+    // Tải danh sách danh mục
+    function loadCategories() {
+      const container = document.getElementById('categoriesContainer');
+      container.innerHTML = '';
+      
+      // Tính toán phân trang
+      const startIndex = (currentPage - 1) * pageSize;
+      const endIndex = Math.min(startIndex + pageSize, categories.length);
+      const currentCategories = categories.slice(startIndex, endIndex);
+      
+      // Cập nhật thông tin kết quả
+      document.getElementById('resultsInfo').textContent = 
+        `Hiển thị ${startIndex + 1}-${endIndex} của ${categories.length} danh mục`;
+      
+      // Hiển thị danh mục
+      currentCategories.forEach(category => {
+        const categoryCard = document.createElement('div');
+        categoryCard.className = `category-card fade-in-up ${category.status === 'inactive' ? 'inactive' : ''}`;
+        categoryCard.innerHTML = `
+          <img src="${category.image}" alt="${category.name}" class="category-image">
+          <div class="category-content">
+            <div class="category-name">
+              ${category.name}
+              <span class="category-status ${category.status === 'active' ? 'status-active' : 'status-inactive'}">
+                ${category.status === 'active' ? 'Đang hoạt động' : 'Đã ẩn'}
+              </span>
+            </div>
+            <div class="category-description">${category.description}</div>
+            <div class="category-stats">
+              <div class="stat-item">
+                <div class="stat-value">${category.productCount}</div>
+                <div class="stat-label">Sản phẩm</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">${formatDate(category.createdAt)}</div>
+                <div class="stat-label">Ngày tạo</div>
+              </div>
+            </div>
+            <div class="category-actions">
+              <div class="category-btn edit" onclick="editCategory(${category.id})">
+                <i class="fas fa-edit me-1"></i>Sửa
+              </div>
+              <div class="category-btn toggle" onclick="toggleCategory(${category.id})">
+                <i class="fas ${category.status === 'active' ? 'fa-eye-slash' : 'fa-eye'} me-1"></i>
+                ${category.status === 'active' ? 'Ẩn' : 'Hiện'}
+              </div>
+              <div class="category-btn delete" onclick="deleteCategory(${category.id})">
+                <i class="fas fa-trash me-1"></i>Xóa
+              </div>
+            </div>
+          </div>
+        `;
+        container.appendChild(categoryCard);
+      });
+      
+      // Tạo phân trang
+      generatePagination();
+    }
+
+    // Tạo phân trang
+    function generatePagination() {
+      totalPages = Math.ceil(categories.length / pageSize);
+      const pagination = document.getElementById('pagination');
+      pagination.innerHTML = '';
+      
+      // Nút Previous
+      const prevItem = document.createElement('li');
+      prevItem.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+      prevItem.innerHTML = `
+        <a class="page-link" href="#" onclick="changePage(${currentPage - 1})" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      `;
+      pagination.appendChild(prevItem);
+      
+      // Các nút trang
+      const maxVisiblePages = 5;
+      let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+      let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+      
+      // Điều chỉnh nếu gần cuối
+      if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+      }
+      
+      for (let i = startPage; i <= endPage; i++) {
+        const pageItem = document.createElement('li');
+        pageItem.className = `page-item ${i === currentPage ? 'active' : ''}`;
+        pageItem.innerHTML = `<a class="page-link" href="#" onclick="changePage(${i})">${i}</a>`;
+        pagination.appendChild(pageItem);
+      }
+      
+      // Nút Next
+      const nextItem = document.createElement('li');
+      nextItem.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+      nextItem.innerHTML = `
+        <a class="page-link" href="#" onclick="changePage(${currentPage + 1})" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      `;
+      pagination.appendChild(nextItem);
+    }
+
+    // Thay đổi trang
+    function changePage(page) {
+      if (page < 1 || page > totalPages) return;
+      currentPage = page;
+      loadCategories();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Định dạng ngày
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('vi-VN');
+    }
+
+    // Thiết lập tìm kiếm
+    function setupSearch() {
+      const searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const filteredCategories = categories.filter(category => 
+          category.name.toLowerCase().includes(searchTerm) ||
+          category.description.toLowerCase().includes(searchTerm)
+        );
+        
+        categories = [...filteredCategories];
+        currentPage = 1;
+        loadCategories();
+      });
+    }
+
+    // Lọc theo trạng thái
+    function filterByStatus(status) {
+      if (!status) {
+        categories = [...getAllCategories()];
+      } else {
+        categories = getAllCategories().filter(category => category.status === status);
+      }
+      currentPage = 1;
+      loadCategories();
+    }
+
+    // Lấy tất cả danh mục (giả lập từ database)
+    function getAllCategories() {
+      return [
+        {
+          id: 1,
+          name: "BMW",
+          description: "Hãng xe sang Đức với thiết kế thể thao và công nghệ tiên tiến",
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9zgtpQgNOShhs0nSWkwH-WTH66UpuNB7SuQ&s",
+          status: "active",
+          productCount: 6,
+          createdAt: "2024-01-15"
+        },
+        {
+          id: 2,
+          name: "Bugatti",
+          description: "Siêu xe Pháp với hiệu suất và tốc độ đỉnh cao",
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNhuqJrDtcHCj6vFTkpu1CbEgSpU2TcMNQVw&s",
+          status: "active",
+          productCount: 6,
+          createdAt: "2024-01-16"
+        },
+        {
+          id: 3,
+          name: "Ferrari",
+          description: "Huyền thoại xe thể thao Ý với thiết kế biểu tượng",
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReuB3VKkUX7NKc_4I4PQgXorsgXetcMfl3Ug&s",
+          status: "active",
+          productCount: 6,
+          createdAt: "2024-01-17"
+        },
+        {
+          id: 4,
+          name: "Koenigsegg",
+          description: "Siêu xe Thụy Điển với công nghệ đột phá",
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdmFUA8mG_36I82zYmqimd_vpFzQ9loBR_Sg&s",
+          status: "active",
+          productCount: 6,
+          createdAt: "2024-01-18"
+        },
+        {
+          id: 5,
+          name: "Lamborghini",
+          description: "Siêu xe Ý với thiết kế góc cạnh và hiệu suất ấn tượng",
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlnW8qSjAOvIw4E6UuCjD9nELviK_ygV1jiQ&s",
+          status: "active",
+          productCount: 6,
+          createdAt: "2024-01-19"
+        },
+        {
+          id: 6,
+          name: "McLaren",
+          description: "Hãng xe Anh với di sản đua xe và công nghệ F1",
+          image: "https://static.vecteezy.com/system/resources/previews/020/500/684/non_2x/mclaren-brand-symbol-logo-orange-design-british-car-automobile-illustration-with-black-background-free-vector.jpg",
+          status: "active",
+          productCount: 6,
+          createdAt: "2024-01-20"
+        },
+        {
+          id: 7,
+          name: "Mercedes",
+          description: "Hãng xe Đức sang trọng với công nghệ tiên tiến",
+          image: "https://1000logos.net/wp-content/uploads/2018/04/Mercedes-Benz-Logo.png",
+          status: "inactive",
+          productCount: 6,
+          createdAt: "2024-01-21"
+        },
+        {
+          id: 8,
+          name: "Pagani",
+          description: "Siêu xe Ý thủ công với thiết kế nghệ thuật",
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTepuDZk5xMtLHR_bY-bks071NWet2SZRoYTw&s",
+          status: "active",
+          productCount: 6,
+          createdAt: "2024-01-22"
+        },
+        {
+          id: 9,
+          name: "Porsche",
+          description: "Hãng xe Đức với di sản thể thao và thiết kế cổ điển",
+          image: "https://inkythuatso.com/uploads/images/2021/11/porsche-logo-inkythuatso-2-01-12-14-55-43.jpg",
+          status: "active",
+          productCount: 6,
+          createdAt: "2024-01-23"
+        }
+      ];
+    }
+
+    // Mở modal thêm danh mục
+    function openAddModal() {
+      document.getElementById('categoryModalLabel').textContent = 'Thêm Danh mục Mới';
+      document.getElementById('categoryForm').reset();
+      document.getElementById('categoryId').value = '';
+      document.getElementById('categoryStatus').checked = true;
+    }
+
+    // Lưu danh mục
+    function saveCategory() {
+      const id = document.getElementById('categoryId').value;
+      const name = document.getElementById('categoryName').value;
+      const description = document.getElementById('categoryDescription').value;
+      const image = document.getElementById('categoryImage').value;
+      const status = document.getElementById('categoryStatus').checked ? 'active' : 'inactive';
+      
+      if (id) {
+        // Cập nhật danh mục
+        const index = categories.findIndex(c => c.id === parseInt(id));
+        if (index !== -1) {
+          categories[index] = {
+            ...categories[index],
+            name,
+            description,
+            image,
+            status
+          };
+        }
+      } else {
+        // Thêm danh mục mới
+        const newCategory = {
+          id: nextId++,
+          name,
+          description,
+          image,
+          status,
+          productCount: 0,
+          createdAt: new Date().toISOString().split('T')[0]
+        };
+        categories.push(newCategory);
+      }
+      
+      // Đóng modal và tải lại danh sách
+      const modal = bootstrap.Modal.getInstance(document.getElementById('categoryModal'));
+      modal.hide();
+      loadCategories();
+      
+      alert(id ? 'Danh mục đã được cập nhật!' : 'Danh mục đã được thêm mới!');
+    }
+
+    // Sửa danh mục
+    function editCategory(id) {
+      const category = categories.find(c => c.id === id);
+      if (category) {
+        document.getElementById('categoryModalLabel').textContent = 'Sửa Danh mục';
+        document.getElementById('categoryId').value = category.id;
+        document.getElementById('categoryName').value = category.name;
+        document.getElementById('categoryDescription').value = category.description;
+        document.getElementById('categoryImage').value = category.image;
+        document.getElementById('categoryStatus').checked = category.status === 'active';
+        
+        const modal = new bootstrap.Modal(document.getElementById('categoryModal'));
+        modal.show();
+      }
+    }
+
+    // Ẩn/hiện danh mục
+    function toggleCategory(id) {
+      const category = categories.find(c => c.id === id);
+      if (category) {
+        const newStatus = category.status === 'active' ? 'inactive' : 'active';
+        const action = newStatus === 'active' ? 'hiển thị' : 'ẩn';
+        
+        if (confirm(`Bạn có chắc chắn muốn ${action} danh mục "${category.name}"?`)) {
+          category.status = newStatus;
+          loadCategories();
+          alert(`Danh mục đã được ${action}!`);
+        }
+      }
+    }
+
+    // Xóa danh mục
+    function deleteCategory(id) {
+      const category = categories.find(c => c.id === id);
+      if (category) {
+        if (category.productCount > 0) {
+          alert('Không thể xóa danh mục đang có sản phẩm!');
+          return;
+        }
+        
+        if (confirm(`Bạn có chắc chắn muốn xóa danh mục "${category.name}"?`)) {
+          categories = categories.filter(c => c.id !== id);
+          // Đảm bảo không bị lỗi phân trang khi xóa danh mục cuối cùng trên trang
+          if (currentPage > Math.ceil(categories.length / pageSize)) {
+            currentPage = Math.max(1, currentPage - 1);
+          }
+          loadCategories();
+          alert('Danh mục đã được xóa!');
+        }
+      }
+    }
+  </script>
+</body>
+</html>

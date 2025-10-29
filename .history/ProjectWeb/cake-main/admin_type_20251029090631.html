@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Loại Sản phẩm</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    body {
+      background: url('img/hero/hero-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      border-radius: 8px;
+    }
+
+    #editForm,
+    #addForm {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+<header class="bg-light py-3 shadow-sm mb-4">
+  <div class="container text-center">
+    <h3 class="fw-bold text-dark">
+      <i class="fa-solid fa-store"></i> Quản Lý Sản Phẩm - Admin
+    </h3>
+  </div>
+</header>
+
+  <div class="container py-5">
+    <h2 class="text-center mb-4 fw-bold">Quản Lý Loại Sản Phẩm</h2>
+
+    <!-- Nút mở form thêm -->
+    <div class="text-end mb-4">
+      <button id="btnShowAdd" class="btn btn-primary">
+        <i class="fa-solid fa-plus"></i> Thêm loại sản phẩm
+      </button>
+    </div>
+
+    <!-- Form thêm loại sản phẩm -->
+    <div class="card mb-4" id="addForm">
+      <h5><i class="fa-solid fa-plus"></i> Thêm loại sản phẩm mới</h5>
+      <form id="formAdd">
+        <div class="mb-3">
+          <label for="addMa" class="form-label">Mã loại</label>
+          <input type="text" id="addMa" class="form-control" placeholder="Nhập mã loại..." required>
+        </div>
+        <div class="mb-3">
+          <label for="addTen" class="form-label">Tên loại sản phẩm</label>
+          <input type="text" id="addTen" class="form-control" placeholder="Nhập tên loại sản phẩm..." required>
+        </div>
+        <div class="text-end">
+          <button type="button" id="btnCancelAdd" class="btn btn-secondary">
+            <i class="fa-solid fa-xmark"></i> Hủy
+          </button>
+          <button type="submit" class="btn btn-success">
+            <i class="fa-solid fa-save"></i> Lưu loại sản phẩm
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Danh sách -->
+    <div class="card">
+      <h5><i class="fa-solid fa-list"></i> Danh sách loại sản phẩm</h5>
+      <div class="table-responsive mt-3">
+        <table class="table table-bordered text-center align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Mã loại</th>
+              <th>Tên loại sản phẩm</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>LSP001</td>
+              <td>Bánh Kem</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm btn-edit"><i class="fa-solid fa-pen"></i> Sửa</button>
+                <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
+              </td>
+            </tr>
+            <tr>
+              <td>LSP002</td>
+              <td>Bánh Cupcake</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm btn-edit"><i class="fa-solid fa-pen"></i> Sửa</button>
+                <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
+              </td>
+            </tr>
+            <tr>
+              <td>LSP003</td>
+              <td>Bánh Flan</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm btn-edit"><i class="fa-solid fa-pen"></i> Sửa</button>
+                <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
+              </td>
+            </tr>
+            <tr>
+              <td>LSP004</td>
+              <td>Bánh Mì Ngọt</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm btn-edit"><i class="fa-solid fa-pen"></i> Sửa</button>
+                <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
+              </td>
+            </tr>
+            <tr>
+              <td>LSP005</td>
+              <td>Bánh Quy Bơ</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm btn-edit"><i class="fa-solid fa-pen"></i> Sửa</button>
+                <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
+              </td>
+            </tr>
+            <tr>
+              <td>LSP006</td>
+              <td>Bánh Donut</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm btn-edit"><i class="fa-solid fa-pen"></i> Sửa</button>
+                <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Form sửa -->
+    <div class="card mt-4" id="editForm">
+      <h5><i class="fa-solid fa-pen"></i> Chỉnh sửa loại sản phẩm</h5>
+      <form id="formEdit">
+        <div class="mb-3">
+          <label for="editMa" class="form-label">Mã loại</label>
+          <input type="text" id="editMa" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="editTen" class="form-label">Tên loại sản phẩm</label>
+          <input type="text" id="editTen" class="form-control" required>
+        </div>
+        <div class="text-end">
+          <button type="button" id="btnCancel" class="btn btn-secondary"><i class="fa-solid fa-xmark"></i> Hủy</button>
+          <button type="submit" class="btn btn-success"><i class="fa-solid fa-save"></i> Lưu thay đổi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const editForm = document.getElementById('editForm');
+      const addForm = document.getElementById('addForm');
+      const editMa = document.getElementById('editMa');
+      const editTen = document.getElementById('editTen');
+
+      // Hiện form Thêm
+      document.getElementById('btnShowAdd').addEventListener('click', () => {
+        addForm.style.display = 'block';
+        editForm.style.display = 'none';
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      });
+
+      // Hủy form Thêm
+      document.getElementById('btnCancelAdd').addEventListener('click', () => {
+        addForm.style.display = 'none';
+      });
+
+      // Khi bấm Lưu thêm mới (chỉ ẩn form, không thêm thật)
+      document.getElementById('formAdd').addEventListener('submit', e => {
+        e.preventDefault();
+        alert('Đã lưu tạm loại sản phẩm (bảng vẫn giữ nguyên)!');
+        addForm.style.display = 'none';
+      });
+
+      // Khi bấm "Sửa"
+      document.querySelectorAll('.btn-edit').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const row = btn.closest('tr');
+          editMa.value = row.children[0].textContent.trim();
+          editTen.value = row.children[1].textContent.trim();
+          editForm.style.display = 'block';
+          addForm.style.display = 'none';
+          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        });
+      });
+
+      // Khi bấm "Hủy" (form sửa)
+      document.getElementById('btnCancel').addEventListener('click', () => {
+        editForm.style.display = 'none';
+      });
+
+      // Khi bấm "Lưu thay đổi" -> không thay đổi bảng
+      document.getElementById('formEdit').addEventListener('submit', e => {
+        e.preventDefault();
+        alert('Đã lưu tạm nhưng bảng vẫn giữ nguyên!');
+        editForm.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
+
