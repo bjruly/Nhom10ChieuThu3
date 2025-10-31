@@ -106,7 +106,7 @@
     <span class="icon">🧁</span>
     <h2>ĐĂNG NHẬP QUẢN TRỊ VIÊN</h2>
 
-    <form id="admin-login">
+    <form id="admin-login" novalidate>
       <div class="form-group">
         <label for="username">Tên đăng nhập</label>
         <input type="text" id="username" name="username" placeholder="Nhập tên quản trị viên" required>
@@ -127,8 +127,8 @@
   <script>
     document.getElementById("admin-login").addEventListener("submit", function(event) {
       event.preventDefault();
-      // Khi nhấn đăng nhập -> chuyển đến admin_product.html
-      window.location.href = "admin_product.html";
+      // Khi nhấn đăng nhập -> chuyển đến admin_home.html
+      window.location.href = "admin_home.html";
     });
   </script>
 </body>

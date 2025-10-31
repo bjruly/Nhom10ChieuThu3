@@ -203,6 +203,7 @@
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul>
+                          <li><a href="./admin_home.html">Home</a></li>
                             <li><a href="./admin_product.html">Quản Lý Đơn Hàng</a></li>
                             <li><a href="./admin_member.html">Quản Lý Khách Hàng</a></li>
                             <li class="active"><a href="#">Quản Lý Kho</a>
@@ -503,6 +504,53 @@
       }
     });
   </script>
+<script>
+  // Ẩn/hiện danh mục có thể thay đổi linh hoạt bất kỳ lúc nào
+  document.addEventListener('click', function (e) {
+    const hideBtn = e.target.closest('.btn-hide');
+    const showBtn = e.target.closest('.btn-show');
+
+    // Nếu bấm nút Ẩn
+    if (hideBtn) {
+      const row = hideBtn.closest('tr');
+      const badge = row.querySelector('.badge');
+      badge.classList.remove('bg-success');
+      badge.classList.add('bg-secondary');
+      badge.textContent = 'Ẩn';
+
+      // Thay nút bằng nút Hiển thị
+      hideBtn.classList.remove('btn-hide', 'btn-secondary');
+      hideBtn.classList.add('btn-show', 'btn-success');
+      hideBtn.innerHTML = '<i class="fa fa-eye"></i>';
+    }
+
+    // Nếu bấm nút Hiển thị lại
+    if (showBtn) {
+      const row = showBtn.closest('tr');
+      const badge = row.querySelector('.badge');
+      badge.classList.remove('bg-secondary');
+      badge.classList.add('bg-success');
+      badge.textContent = 'Hiển thị';
+
+      // Thay nút bằng nút Ẩn
+      showBtn.classList.remove('btn-show', 'btn-success');
+      showBtn.classList.add('btn-hide', 'btn-secondary');
+      showBtn.innerHTML = '<i class="fa fa-eye-slash"></i>';
+    }
+  });
+
+  // 💡 Khi bấm nút "Thêm" trong modal thêm → đóng modal
+  document.querySelector('#addModal .btn-success').addEventListener('click', function () {
+    const modal = bootstrap.Modal.getInstance(document.getElementById('addModal'));
+    modal.hide();
+  });
+
+  // 💡 Khi bấm nút "Lưu thay đổi" trong modal sửa → đóng modal
+  document.querySelector('#editModal .btn-warning').addEventListener('click', function () {
+    const modal = bootstrap.Modal.getInstance(document.getElementById('editModal'));
+    modal.hide();
+  });
+</script>
 
 </body>
 

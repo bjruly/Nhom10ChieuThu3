@@ -203,6 +203,7 @@
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul>
+                            <li><a href="./admin_home.html">Home</a></li>
                             <li><a href="./admin_product.html">Quản Lý Đơn Hàng</a></li>
                             <li><a href="./admin_member.html">Quản Lý Khách Hàng</a></li>
                             <li class="active"><a href="#">Quản Lý Kho</a>
@@ -318,7 +319,7 @@
         </div>
     </div>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
     <script src="js/jquery.barfiller.js"></script>
@@ -327,5 +328,190 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- ⚡ Script xử lý nút Tra cứu -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const lookupBtn = document.querySelector('.btn.btn-primary.w-100');
+        
+        lookupBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          // Xóa thông báo cũ nếu có
+          const oldAlert = document.getElementById('lookupAlert');
+          if (oldAlert) oldAlert.remove();
+
+          // Tạo thông báo mới
+          const alertBox = document.createElement('div');
+          alertBox.className = 'alert alert-success mt-3';
+          alertBox.id = 'lookupAlert';
+          alertBox.role = 'alert';
+          alertBox.innerHTML = '<strong>✅ Tra cứu thành công!</strong> Dữ liệu tồn kho đã được cập nhật.';
+
+          // Chèn thông báo ngay sau thẻ .card đầu tiên
+          const card = lookupBtn.closest('.card');
+          card.appendChild(alertBox);
+
+          // Tự động ẩn sau 3 giây
+          setTimeout(() => alertBox.remove(), 3000);
+        });
+      });
+    </script>
+        <!-- ⚡ Script xử lý nút Tra cứu -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // =========================
+  // XỬ LÝ NÚT "TRA CỨU TỒN KHO"
+  // =========================
+  const lookupBtn = document.querySelector('.btn.btn-primary.w-100');
+  lookupBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    const oldAlert = document.getElementById('lookupAlert');
+    if (oldAlert) oldAlert.remove();
+
+    const alertBox = document.createElement('div');
+    alertBox.className = 'alert alert-success mt-3';
+    alertBox.id = 'lookupAlert';
+    alertBox.role = 'alert';
+    alertBox.innerHTML = '<strong>✅ Tra cứu thành công!</strong> Dữ liệu tồn kho đã được cập nhật.';
+    const card = lookupBtn.closest('.card');
+    card.appendChild(alertBox);
+    setTimeout(() => alertBox.remove(), 3000);
+  });
+
+  // =========================
+  // XỬ LÝ NÚT "XEM BÁO CÁO"
+  // =========================
+  const reportBtn = document.querySelector('.btn.btn-success.w-100');
+  reportBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    if (document.getElementById('reportTable')) return;
+
+    const reportHTML = `
+      <div id="reportTable" class="mt-4 border rounded p-3 shadow-sm position-relative bg-white">
+        <button id="closeReport" class="btn btn-sm btn-danger position-absolute" 
+          style="top: 10px; right: 10px;">❌ Đóng báo cáo</button>
+
+        <h6 class="mb-3"><i class="fa-solid fa-file-lines"></i> Báo cáo Nhập - Xuất - Tồn</h6>
+        <table class="table table-bordered text-center align-middle mb-3">
+          <thead class="table-light">
+            <tr>
+              <th>Ngày</th>
+              <th>Số lượng nhập</th>
+              <th>Số lượng xuất</th>
+              <th>Tồn cuối ngày</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>01/10/2025</td><td>50</td><td>10</td><td>40</td></tr>
+            <tr><td>02/10/2025</td><td>0</td><td>5</td><td>35</td></tr>
+            <tr><td>03/10/2025</td><td>20</td><td>15</td><td>40</td></tr>
+            <tr><td>04/10/2025</td><td>0</td><td>8</td><td>32</td></tr>
+            <tr><td>05/10/2025</td><td>10</td><td>3</td><td>39</td></tr>
+          </tbody>
+        </table>
+        <div class="alert alert-info mt-2 mb-0" role="alert">
+          <strong>📊 Tổng kết:</strong> Nhập: 80 | Xuất: 41 | Tồn cuối kỳ: 39
+        </div>
+      </div>
+    `;
+
+    const card = reportBtn.closest('.card');
+    card.insertAdjacentHTML('beforeend', reportHTML);
+
+    document.getElementById('closeReport').addEventListener('click', function () {
+      document.getElementById('reportTable').remove();
+    });
+  });
+
+  // =========================
+  // XỬ LÝ NÚT "CHI TIẾT SẢN PHẨM"
+  // =========================
+  const detailButtons = document.querySelectorAll('.btn-info.btn-sm');
+
+  detailButtons.forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // Xóa bảng chi tiết cũ nếu có
+      const oldDetail = document.getElementById('productDetail');
+      if (oldDetail) oldDetail.remove();
+
+      // Lấy thông tin từ dòng hiện tại
+      const row = btn.closest('tr');
+      const cells = row.querySelectorAll('td');
+      const id = cells[0].innerText;
+      const name = cells[1].innerText;
+      const category = cells[2].innerText;
+      const quantity = cells[3].innerText;
+      const unit = cells[4].innerText;
+      const status = cells[5].innerText;
+
+      // Gán ảnh và mô tả tạm (bạn có thể chỉnh theo sản phẩm thực tế)
+      const productImages = {
+        "#SP001": "img/shop/product-1.jpg",
+        "#SP002": "img/shop/product-2.jpg",
+        "#SP003": "img/shop/product-3.jpg",
+        "#SP004": "img/shop/product-4.jpg",
+        "#SP005": "img/shop/product-5.jpg",
+        "#SP006": "img/shop/product-6.jpg",
+        "#SP007": "img/shop/product-7.jpg",
+        "#SP008": "img/shop/product-8.jpg"
+      };
+
+      const productDescriptions = {
+        "#SP001": "Bộ 12 chiếc cupcake đa dạng hương vị, mềm mịn và ngọt ngào.",
+        "#SP002": "Bánh kem caramel mặn nhẹ, lớp kem mềm tan.",
+        "#SP003": "Cupcake mùa thu, thơm vị quế và hạt dẻ.",
+        "#SP004": "Cupcake socola cookies ngọt ngào, topping kem vani.",
+        "#SP005": "Cupcake Mississippi Mud thơm béo vị socola đậm.",
+        "#SP006": "Bánh German Chocolate phủ kem cacao hấp dẫn.",
+        "#SP007": "Bánh mì thuần chay không gluten, thơm mùi hạt ngũ cốc.",
+        "#SP008": "Cupcake Dulce De Leche caramel ngọt dịu và thơm."
+      };
+
+      const imgSrc = productImages[id] || "img/shop/default.jpg";
+      const desc = productDescriptions[id] || "Không có mô tả chi tiết.";
+
+      // Tạo bảng chi tiết
+      const detailHTML = `
+        <div id="productDetail" class="mt-4 border rounded p-4 shadow-sm bg-white position-relative">
+          <button id="closeDetail" class="btn btn-sm btn-danger position-absolute" 
+            style="top: 10px; right: 10px;">❌ Đóng</button>
+          <h5 class="mb-3"><i class="fa-solid fa-box-open"></i> Chi tiết sản phẩm ${id}</h5>
+          <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+              <img src="${imgSrc}" alt="${name}" class="img-fluid rounded" style="max-height: 200px;">
+            </div>
+            <div class="col-md-8">
+              <table class="table table-sm table-borderless mb-0">
+                <tr><th>Tên sản phẩm:</th><td>${name}</td></tr>
+                <tr><th>Loại:</th><td>${category}</td></tr>
+                <tr><th>Mô tả:</th><td>${desc}</td></tr>
+                <tr><th>Số lượng tồn:</th><td>${quantity} ${unit}</td></tr>
+                <tr><th>Trạng thái:</th><td>${status}</td></tr>
+                <tr><th>Giá bán:</th><td><strong>${((Math.floor(Math.random() * ((150000 - 20000) / 10000 + 1)) * 10000) + 20000).toLocaleString('vi-VN')}
+ đ</strong></td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Chèn bảng chi tiết ngay sau bảng tồn kho
+      const stockCard = document.querySelector('.card.bg-white');
+      stockCard.insertAdjacentHTML('afterend', detailHTML);
+
+      // Nút đóng chi tiết
+      document.getElementById('closeDetail').addEventListener('click', function () {
+        document.getElementById('productDetail').remove();
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

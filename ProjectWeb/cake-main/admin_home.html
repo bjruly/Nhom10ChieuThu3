@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trang quản trị | Hero Section</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Playfair Display', serif;
+    }
+
+    body {
+      background-color: #fff8f4;
+      color: #4b3b2d;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('img/hero/hero-1.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #3b2417;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .hero-content button {
+      background-color: #d77b5a;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .hero-content button:hover {
+      background-color: #c56848;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      background-color: #f8ede3;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #5a4636;
+    }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      animation: fadePopup 0.4s ease-in-out;
+    }
+
+    @keyframes fadePopup {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .popup-box {
+      background: #fffaf7;
+      padding: 50px 60px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      animation: slideUp 0.5s ease;
+      width: 700px;
+      position: relative;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: #a35a3a;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .close-btn:hover {
+      color: #c56848;
+    }
+
+    .popup-box h2 {
+      color: #4b3b2d;
+      margin-bottom: 25px;
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+    }
+
+    /* Menu hàng ngang */
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 35px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .menu button {
+      background: #d77b5a;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 200px;
+      text-align: center;
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    .menu button:hover {
+      background: #c56848;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%; /* dính sát nút */
+      left: 0;
+      background-color: #fffaf7;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border-radius: 10px;
+      padding: 8px 0;
+      width: 230px;
+      z-index: 10;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .dropdown-content button {
+      width: 100%;
+      background: none;
+      color: #4b3b2d;
+      border: none;
+      text-align: left;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .dropdown-content button:hover {
+      background: #f3bca0;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Ô thống kê */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0 30px;
+    }
+
+    .stat-card {
+      background: #fdf3ed;
+      padding: 20px 30px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 30%;
+      transition: transform 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #3b2417;
+    }
+
+    .stat-card p {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #d77b5a;
+    }
+
+    canvas {
+      margin: 10px auto 20px;
+      max-width: 400px;
+      height: 200px !important;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Chào mừng đến trang quản trị</h1>
+      <p>Quản lý sản phẩm bánh ngọt, cupcake và nhiều hơn nữa.</p>
+      <button onclick="showPopup()">Khám phá ngay</button>
+    </div>
+  </section>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <div class="popup-box">
+      <button class="close-btn" onclick="closePopup()">×</button>
+      <h2>Tổng quan hệ thống</h2>
+
+      <!-- Menu hàng ngang -->
+      <div class="menu">
+        <button onclick="window.location.href='./admin_product.html'">Quản lý đơn hàng</button>
+        <button onclick="window.location.href='./admin_member.html'">Quản lý khách hàng</button>
+        <div class="dropdown">
+          <button>Quản lý kho</button>
+          <div class="dropdown-content">
+            <button onclick="window.location.href='./admin_category.html'">Quản lý danh mục sản phẩm</button>
+            <button onclick="window.location.href='./admin_import.html'">Quản lý nhập sản phẩm</button>
+            <button onclick="window.location.href='./admin_selling.html'">Quản lý giá bán</button>
+            <button onclick="window.location.href='./admin_quantity.html'">Quản lý số lượng tồn</button>
+            <button onclick="window.location.href='./admin_type.html'">Quản lý loại sản phẩm</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <h3>🧁 Sản phẩm</h3>
+          <p>15</p>
+        </div>
+        <div class="stat-card">
+          <h3>🛒 Đơn hàng</h3>
+          <p>8</p>
+        </div>
+        <div class="stat-card">
+          <h3>👥 Quản trị viên</h3>
+          <p>3</p>
+        </div>
+      </div>
+
+      <canvas id="statsChart"></canvas>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Sweet Admin.
+  </footer>
+
+  <script>
+    let chartInstance = null;
+
+    function showPopup() {
+      const popup = document.getElementById('popup');
+      popup.style.display = 'flex';
+
+      const ctx = document.getElementById('statsChart').getContext('2d');
+      if (chartInstance) chartInstance.destroy();
+
+      chartInstance = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Sản phẩm', 'Đơn hàng', 'Quản trị viên'],
+          datasets: [{
+            data: [15, 8, 3],
+            backgroundColor: ['#d77b5a', '#f3b26b', '#8ab17d'],
+            borderColor: '#fffaf7',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: '#4b3b2d',
+                font: { size: 18 }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

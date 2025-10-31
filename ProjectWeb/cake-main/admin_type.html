@@ -11,67 +11,53 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="css/style.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-        /* ==================================== */
-        /* CẤU TRÚC MENU THẢ XUỐNG (DROPDOWN) */
-        /* ==================================== */
 
-        /* 1. Thiết lập vị trí tương đối cho mục cha */
-        .header__top__left ul li.has-dropdown {
-            position: relative; 
-        }
-
-        /* KHẮC PHỤC LỖI TÔ ĐEN TRÊN LIÊN KẾT CHA */
-        .header__top__left ul li.has-dropdown > a:focus,
-        .header__top__left ul li.has-dropdown > a:active {
-            /* Dùng !important để ghi đè CSS từ file style.css nếu cần */
-            outline: none !important; 
-            -webkit-tap-highlight-color: transparent; 
-            background-color: transparent !important;
-        }
-
-        /* 2. Thiết lập trạng thái mặc định (ẨN) cho dropdown */
-        .header__top__left ul li .dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0; 
-            z-index: 100;
-
-            /* NỀN ĐẬM CHO CHỮ TRẮNG NỔI BẬT */
-            background-color: #333; /* Nền xám/đen đậm */
-            border: 1px solid #555;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            min-width: 200px;
-            padding: 5px 0;
-            list-style: none; /* Loại bỏ dấu chấm */
-        }
-
-        /* 3. Hiển thị menu khi di chuột vào mục cha */
-        .header__top__left ul li.has-dropdown:hover > .dropdown {
-            display: block;
-        }
-
-        /* 4. Định kiểu cho các mục con trong menu */
-        .header__top__left ul li .dropdown li a {
-            display: block;
-            padding: 10px 15px;
-            text-decoration: none;
-            
-            /* MÀU CHỮ TRẮNG */
-            color: white; 
-            
-            font-size: 16px;
-            white-space: nowrap;
-        }
-
-        /* Hiệu ứng di chuột (hover) cho các mục con */
-        .header__top__left ul li .dropdown li a:hover {
-            background-color: #555; /* Nền xám nhẹ khi hover */
-            color: #ffcc00; /* Màu nổi bật khi hover */
-        }
-    </style>
   <style>
+    /* MENU DROPDOWN */
+    .header__top__left ul li.has-dropdown {
+      position: relative;
+    }
+
+    .header__top__left ul li.has-dropdown > a:focus,
+    .header__top__left ul li.has-dropdown > a:active {
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent;
+      background-color: transparent !important;
+    }
+
+    .header__top__left ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 100;
+      background-color: #333;
+      border: 1px solid #555;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      min-width: 200px;
+      padding: 5px 0;
+      list-style: none;
+    }
+
+    .header__top__left ul li.has-dropdown:hover>.dropdown {
+      display: block;
+    }
+
+    .header__top__left ul li .dropdown li a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      white-space: nowrap;
+    }
+
+    .header__top__left ul li .dropdown li a:hover {
+      background-color: #555;
+      color: #ffcc00;
+    }
+
+    /* GIAO DIỆN CHUNG */
     body {
       background: url('img/hero/hero-1.jpg') no-repeat center center fixed;
       background-size: cover;
@@ -106,7 +92,7 @@
       border-radius: 8px;
     }
 
-    /* Form nâng cấp đẹp hơn */
+    /* FORM */
     .card-form {
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -155,7 +141,7 @@
 </head>
 
 <body>
-  <!-- HEADER & MENU -->
+  <!-- HEADER -->
   <header class="header">
     <div class="header__top">
       <div class="container">
@@ -165,7 +151,7 @@
               <div class="header__top__left">
                 <ul>
                   <li class="has-dropdown">
-                    Xin chào <strong>Admin</strong><span class="arrow_carrot-down"></span>
+                    Xin chào <strong>Admin</strong>
                     <ul class="dropdown">
                       <li><a href="./admin_login.html">Log out</a></li>
                     </ul>
@@ -183,48 +169,44 @@
     </div>
 
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <nav class="header__menu mobile-menu">
-            <ul>
-              <li><a href="./admin_import.html">Quản Lý Đơn Hàng</a></li>
-              <li><a href="./admin_member.html">Quản Lý Khách Hàng</a></li>
-              <li class="active"><a href="#">Quản Lý Kho</a>
-                <ul class="dropdown">
-                  <li><a href="./admin_category.html">Quản Lý Danh Mục</a></li>
-                  <li><a href="./admin_import.html">Quản Lý Nhập Sản Phẩm</a></li>
-                  <li><a href="./admin_selling.html">Quản Lý Giá Bán</a></li>
-                  <li><a href="./admin_quantity.html">Quản Lý Số Lượng Tồn</a></li>
-                  <li><a href="./admin_type.html">Quản Lý Loại Sản Phẩm</a></li>
-                </ul>
-              </li>
+      <nav class="header__menu mobile-menu">
+        <ul>
+          <li><a href="./admin_home.html">Home</a></li>
+          <li><a href="./admin_import.html">Quản Lý Đơn Hàng</a></li>
+          <li><a href="./admin_member.html">Quản Lý Khách Hàng</a></li>
+          <li class="active"><a href="#">Quản Lý Kho</a>
+            <ul class="dropdown">
+              <li><a href="./admin_category.html">Quản Lý Danh Mục</a></li>
+              <li><a href="./admin_import.html">Quản Lý Nhập Sản Phẩm</a></li>
+              <li><a href="./admin_selling.html">Quản Lý Giá Bán</a></li>
+              <li><a href="./admin_quantity.html">Quản Lý Số Lượng Tồn</a></li>
+              <li><a href="./admin_type.html">Quản Lý Loại Sản Phẩm</a></li>
             </ul>
-          </nav>
-        </div>
-      </div>
+          </li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN -->
   <div class="container py-5">
     <h2 class="text-center">Quản Lý Loại Sản Phẩm</h2>
 
-    <!-- Nút Thêm loại sản phẩm -->
     <div class="text-end mb-3">
       <button id="btnShowAdd" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Thêm loại sản phẩm</button>
     </div>
 
-    <!-- Form thêm loại sản phẩm -->
+    <!-- FORM THÊM -->
     <div class="card card-form" id="addForm">
       <h5><i class="fa-solid fa-plus"></i> Thêm loại sản phẩm mới</h5>
       <form id="formAdd">
         <div class="mb-3">
           <label for="addMa" class="form-label">Mã loại</label>
-          <input type="text" id="addMa" class="form-control" placeholder="Nhập mã loại..." required>
+          <input type="text" id="addMa" class="form-control" placeholder="Nhập mã loại...">
         </div>
         <div class="mb-3">
           <label for="addTen" class="form-label">Tên loại sản phẩm</label>
-          <input type="text" id="addTen" class="form-control" placeholder="Nhập tên loại sản phẩm..." required>
+          <input type="text" id="addTen" class="form-control" placeholder="Nhập tên loại sản phẩm...">
         </div>
         <div class="text-end">
           <button type="button" id="btnCancelAdd" class="btn btn-secondary"><i class="fa-solid fa-xmark"></i> Hủy</button>
@@ -233,7 +215,7 @@
       </form>
     </div>
 
-    <!-- Danh sách loại sản phẩm -->
+    <!-- DANH SÁCH -->
     <div class="card">
       <h5><i class="fa-solid fa-list"></i> Danh sách loại sản phẩm</h5>
       <div class="table-responsive mt-3">
@@ -251,7 +233,7 @@
               <td>Bánh kem</td>
               <td>
                 <button class="btn btn-warning btn-sm btn-edit"><i class="fa-solid fa-pen"></i> Sửa</button>
-                <button onclick = "deleteProduct()"class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
+                <button onclick="deleteProduct()" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
               </td>
             </tr>
             <tr>
@@ -259,7 +241,7 @@
               <td>Bánh Cupcake</td>
               <td>
                 <button class="btn btn-warning btn-sm btn-edit"><i class="fa-solid fa-pen"></i> Sửa</button>
-                <button onclick = "deleteProduct()"class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
+                <button onclick="deleteProduct()" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
               </td>
             </tr>
             <tr>
@@ -267,7 +249,7 @@
               <td>Bánh Mì</td>
               <td>
                 <button class="btn btn-warning btn-sm btn-edit"><i class="fa-solid fa-pen"></i> Sửa</button>
-                <button onclick = "deleteProduct()"class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
+                <button onclick="deleteProduct()" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
               </td>
             </tr>
             <tr>
@@ -275,7 +257,7 @@
               <td>Bánh Flan</td>
               <td>
                 <button class="btn btn-warning btn-sm btn-edit"><i class="fa-solid fa-pen"></i> Sửa</button>
-                <button onclick = "deleteProduct()"class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
+                <button onclick="deleteProduct()" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Xóa</button>
               </td>
             </tr>
           </tbody>
@@ -283,17 +265,17 @@
       </div>
     </div>
 
-    <!-- Form Sửa loại sản phẩm -->
+    <!-- FORM SỬA -->
     <div class="card card-form mt-4" id="editForm">
       <h5><i class="fa-solid fa-pen"></i> Chỉnh sửa loại sản phẩm</h5>
       <form id="formEdit">
         <div class="mb-3">
           <label for="editMa" class="form-label">Mã loại</label>
-          <input type="text" id="editMa" class="form-control" required>
+          <input type="text" id="editMa" class="form-control">
         </div>
         <div class="mb-3">
           <label for="editTen" class="form-label">Tên loại sản phẩm</label>
-          <input type="text" id="editTen" class="form-control" required>
+          <input type="text" id="editTen" class="form-control">
         </div>
         <div class="text-end">
           <button type="button" id="btnCancel" class="btn btn-secondary"><i class="fa-solid fa-xmark"></i> Hủy</button>
@@ -301,63 +283,120 @@
         </div>
       </form>
     </div>
-
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const editForm = document.getElementById('editForm');
-      const addForm = document.getElementById('addForm');
-      const editMa = document.getElementById('editMa');
-      const editTen = document.getElementById('editTen');
+  // ===== TẠO HÀM HIỂN THỊ THÔNG BÁO (TOAST) =====
+  function showToast(message, type = "success") {
+    // Tạo phần tử toast
+    const toast = document.createElement("div");
+    toast.className = `custom-toast ${type}`;
+    toast.innerHTML = `
+      <i class="fa-solid ${type === "success" ? "fa-circle-check" : "fa-circle-exclamation"}"></i>
+      <span>${message}</span>
+    `;
 
-      // Hiện form Thêm
-      document.getElementById('btnShowAdd').addEventListener('click', () => {
-        addForm.style.display = 'block';
-        editForm.style.display = 'none';
+    // Thêm vào body
+    document.body.appendChild(toast);
+
+    // Hiệu ứng xuất hiện
+    setTimeout(() => toast.classList.add("show"), 100);
+
+    // Tự động biến mất sau 3s
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => toast.remove(), 500);
+    }, 3000);
+  }
+
+  // ===== CSS CHO TOAST =====
+  const style = document.createElement("style");
+  style.innerHTML = `
+    .custom-toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(40, 167, 69, 0.95);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.4s ease;
+      z-index: 9999;
+    }
+    .custom-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .custom-toast.error {
+      background: rgba(220, 53, 69, 0.95);
+    }
+    .custom-toast i {
+      font-size: 18px;
+    }
+  `;
+  document.head.appendChild(style);
+
+  // ===== LOGIC CŨ NHƯNG ĐỔI ALERT → TOAST =====
+  document.addEventListener("DOMContentLoaded", () => {
+    const editForm = document.getElementById('editForm');
+    const addForm = document.getElementById('addForm');
+    const editMa = document.getElementById('editMa');
+    const editTen = document.getElementById('editTen');
+
+    document.getElementById('btnShowAdd').addEventListener('click', () => {
+      addForm.style.display = 'block';
+      editForm.style.display = 'none';
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+
+    document.getElementById('btnCancelAdd').addEventListener('click', () => {
+      addForm.style.display = 'none';
+    });
+
+    document.getElementById('formAdd').addEventListener('submit', e => {
+      e.preventDefault();
+      showToast(`Đã lưu: Mã = ${document.getElementById('addMa').value}, Tên = ${document.getElementById('addTen').value}`);
+      addForm.style.display = 'none';
+    });
+
+    document.querySelectorAll('.btn-edit').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const row = btn.closest('tr');
+        editMa.value = row.children[0].textContent.trim();
+        editTen.value = row.children[1].textContent.trim();
+        editForm.style.display = 'block';
+        addForm.style.display = 'none';
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       });
-
-      // Hủy form Thêm
-      document.getElementById('btnCancelAdd').addEventListener('click', () => {
-        addForm.style.display = 'none';
-      });
-
-      // Lưu form Thêm (chỉ hiện thông báo)
-      document.getElementById('formAdd').addEventListener('submit', e => {
-        e.preventDefault();
-        alert(`Đã lưu tạm: Mã=${document.getElementById('addMa').value}, Tên=${document.getElementById('addTen').value}`);
-        addForm.style.display = 'none';
-      });
-
-      // Khi bấm "Sửa"
-      document.querySelectorAll('.btn-edit').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const row = btn.closest('tr');
-          editMa.value = row.children[0].textContent.trim();
-          editTen.value = row.children[1].textContent.trim();
-          editForm.style.display = 'block';
-          addForm.style.display = 'none';
-          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        });
-      });
-
-      // Hủy form Sửa
-      document.getElementById('btnCancel').addEventListener('click', () => {
-        editForm.style.display = 'none';
-      });
-
-      // Lưu form Sửa (chỉ hiện thông báo)
-      document.getElementById('formEdit').addEventListener('submit', e => {
-        e.preventDefault();
-        alert(`Đã lưu tạm: Mã=${editMa.value}, Tên=${editTen.value}`);
-        editForm.style.display = 'none';
-      });
     });
-  </script>
+
+    document.getElementById('btnCancel').addEventListener('click', () => {
+      editForm.style.display = 'none';
+    });
+
+    document.getElementById('formEdit').addEventListener('submit', e => {
+      e.preventDefault();
+      showToast(`Đã cập nhật: Mã = ${editMa.value}, Tên = ${editTen.value}`);
+      editForm.style.display = 'none';
+    });
+  });
+
+  // ===== THAY THẾ XÓA BẰNG TOAST =====
+  function deleteProduct() {
+    showToast("Đã xóa sản phẩm", "error");
+  }
+</script>
+
 
   <script src="js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/slider.js"></script>
+
 </body>
 </html>
